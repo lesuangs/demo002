@@ -29,14 +29,14 @@
             </div>
             <van-field
                     v-model="nickname"
-                    :label="$t('lang.register.nickname[0]')"
-                    :placeholder="$t('lang.register.nickname[1]')"
+                    :label="$t('lang.register.userNickname[0]')"
+                    :placeholder="$t('lang.register.userNickname[1]')"
                     :clearable="true"
                     :rules="nickNameRules" />
             <van-field
                     v-model="account"
-                    :label="$t('lang.register.user[0]')"
-                    :placeholder="$t('lang.register.user[1]')"
+                    :label="$t('lang.register.loginAccount[0]')"
+                    :placeholder="$t('lang.register.loginAccount[1]')"
                     :clearable="true"
                     :rules="nameRules"
                     :error-message="hasAccount ? $t('lang.register.hasValue[0]') : ''"
@@ -61,21 +61,21 @@
                     @blur="checkPhone" />-->
             <van-field
                     v-model="password"
-                    :label="$t('lang.register.password[0]')"
+                    :label="$t('lang.register.userPwd[0]')"
                     :type="pwdType1"
                     :right-icon="rightIcon1"
                     @click-right-icon="handleRightIcon('new')"
-                    :placeholder="$t('lang.register.password[1]')"
+                    :placeholder="$t('lang.register.userPwd[1]')"
                     :clearable="true"
                     :rules="pwdRules" />
             <van-field
                     v-model="rePassword"
                     :type="pwdType2"
-                    :label="$t('lang.register.confirm_password[0]')"
+                    :label="$t('lang.register.confirmPwd[0]')"
                     :right-icon="rightIcon2"
                     @click-right-icon="handleRightIcon('sure')"
-                    :placeholder="$t('lang.register.confirm_password[1]')"
-                    :rules="[{ required: true, message: $t('lang.register.confirm_password[1]') }]"
+                    :placeholder="$t('lang.register.confirmPwd[1]')"
+                    :rules="[{ required: true, message: $t('lang.register.confirmPwd[1]') }]"
                     :clearable="true" />
           </div>
           <div class="bonus">
@@ -84,7 +84,7 @@
                     readonly
                     clickable
                     right-icon="arrow-down"
-                    :label="$t('lang.register.bonus[0]')"
+                    :label="$t('lang.EnrollmentManagement.bonusSettings')"
                     :value="textValue"
                     @click="showPicker = true"
             />
@@ -92,7 +92,7 @@
               <van-picker
                       v-if="hasRange"
                       show-toolbar
-                      :title="$t('lang.register.bonus[0]')"
+                      :title="$t('lang.EnrollmentManagement.bonusSettings')"
                       :columns="option"
                       @cancel="showPicker = false"
                       @confirm="onConfirm"
@@ -100,7 +100,7 @@
                       cancel-button-text=" "
               />
             </van-popup>
-            <!--        <div class="bonusSetting">* {{ $t('lang.register.bonus[0]') }}</div>-->
+            <!--        <div class="bonusSetting">* {{ $t('lang.EnrollmentManagement.bonusSettings') }}</div>-->
             <!--        <van-popup v-model="showPicker" position="bottom" :overlay="true">-->
             <!--          <van-picker-->
             <!--              title="奖金设置"-->
@@ -120,7 +120,7 @@
             <button class="btn-type2"
                     :class=" disabled ? 'disable' : ''"
                     :disabled="disabled"
-                    block native-type="submit">{{ $t('lang.register.btn[0]') }}</button>
+                    block native-type="submit">{{ $t('lang.EnrollmentManagement.openAccountNow') }}</button>
           </div>
         </van-form>
       </div>
@@ -142,7 +142,7 @@
     data() {
       return {
         headObj: {
-          title: 'lang.register.title[0]',
+          title: 'lang.daiLiZhongXin.registrationManagement',
           showArrow: true,
         },
         isDl: '0',
@@ -180,20 +180,20 @@
         isNotData: true,
         showPicker:false,
         nickNameRules: [
-          {required: true, message: this.$t('lang.register.nickname[2]')},
-          {pattern: REG_RULE.nickname.reg, message: this.$t('lang.register.nickname[2]')}
+          {required: true, message: this.$t('lang.register.userNickname[2]')},
+          {pattern: REG_RULE.nickname.reg, message: this.$t('lang.register.userNickname[2]')}
         ],
         nameRules: [
-          {required: true, message: this.$t('lang.register.user[2]')},
-          {pattern: REG_RULE.username.reg, message: this.$t('lang.register.user[2]')}
+          {required: true, message: this.$t('lang.register.loginAccount[2]')},
+          {pattern: REG_RULE.username.reg, message: this.$t('lang.register.loginAccount[2]')}
         ],
         pwdRules: [
-          {required: true, message: this.$t('lang.register.password[2]')},
-          {pattern: REG_RULE.loginPwd.reg, message: this.$t('lang.register.password[2]')}
+          {required: true, message: this.$t('lang.register.userPwd[2]')},
+          {pattern: REG_RULE.loginPwd.reg, message: this.$t('lang.register.userPwd[2]')}
         ],
         rePwdRules: [
-          {required: true, message: this.$t('lang.register.confirm_password[2]')},
-          {pattern: REG_RULE.loginPwd.reg, message: this.$t('lang.register.confirm_password[2]')}
+          {required: true, message: this.$t('lang.register.userPwd[2]')},
+          {pattern: REG_RULE.loginPwd.reg, message: this.$t('lang.register.userPwd[2]')}
         ],
       /*  realNameRules: [
           {required: true, message: this.$t('lang.register.actualName[2]')},
@@ -303,7 +303,7 @@
                return
              }*/
         if (this.password !== this.rePassword) {
-          return this.$toast(this.$t('lang.register.confirm_password[2]'))
+          return this.$toast(this.$t('lang.register.confirmPwd[2]'))
         }
         //请求注册接口
         let params = {
@@ -346,7 +346,7 @@
           if(res.code === 200){
             if(res.data === true){
               this.$toast.clear();
-              this.$toast.success(this.$t('lang.common.add_tips[0]'))
+              this.$toast.success(this.$t('lang.EnrollmentManagement.xinZengChengGong'))
               // window.location.reload()
               this.resetData();
             }
@@ -373,26 +373,21 @@
         this.password= '';
         this.rePassword= '';
       },
-      checkAccount() {
-        this.$http.users.getCheckUnique(this.account).then(res => {
-          this.hasAccount = !res.data
-        })
-      },
-/*      checkFullName() {
+      checkFullName() {
         if (!this.fullNameRule.test(this.fullName)) {
-          this.$toast(this.$t('lang.register.full_name[3]'))
+          this.$toast(this.$t('lang.EnrollmentManagement.messageThree'))
           return
         }
-        /!*if(this.onlyfullName===1){
+        /*if(this.onlyfullName===1){
           this.$http.users.getCheckUnique(1, this.fullName).then(res => {
             console.log(res)
             this.hasFullName = res.data
           })
-        }*!/
-      },*/
- /*     checkPhone() {
+        }*/
+      },
+      checkPhone() {
         if (!this.phoneRule.test(this.phone)) {
-          this.$toast(this.$t('lang.register.phone[3]'))
+          this.$toast(this.$t('lang.EnrollmentManagement.thePhoneDigits'))
           return
         }
         if (this.onlyfullPhone === 1) {
@@ -406,8 +401,22 @@
             // this.hasPhone = res.data
           })
         }
-      },*/
-
+      },
+      checkAccount() {
+        // if (!this.accountRule.test(this.account)) {
+        //   this.$toast(this.$t('lang.EnrollmentManagement.loginAccount[2]'))
+        //   return
+        // }
+        this.$http.users.checkUnique(0, this.account).then(res => {
+          // console.log(res,'checkUnique111111')
+          // this.hasAccount = res.data
+          if(res.data){
+            this.hasAccount = false;
+          }else{
+            this.hasAccount = true;
+          }
+        })
+      },
     },
     computed:{
       ...mapState([

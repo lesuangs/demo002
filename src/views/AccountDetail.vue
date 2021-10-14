@@ -17,12 +17,28 @@
                            @pulling-down="onPullingDown"
                            @pulling-up="onPullingUp">
           <template>
-            <div class="content" style="font-size:.2rem">
+            <div class="account-detail-con">
+              <div class="mod-list-item" @click="toDetail(item)" v-for="item in data" :key="item.id">
+                <div class="top">
+                  <h1>{{ $t(searchName(item.tranType))}}</h1>
+                  <span :class="item.money > 0 ? 'red':'green'">{{item.money > 0 ? '+' : '' }}{{ item.money.toFixed(2) }}</span>
+                </div>
+                <div class="bottom">
+                  <span>{{ item.createTime }}</span>
+                  <!--                  <span>{{$t('lang.user.balance')}}：{{ (item.balance + item.money).toFixed(2) }}</span>-->
+                  <span>
+                    {{$t('lang.common.Balance')}}：
+                    <i class="user-money">{{ item.balance == null ? '0' : format_number(item.balance + item.money).split('.')[0] }}</i><em class="money-point">{{ item.balance == null ? '.00' :'.'+format_number(item.balance + item.money).split('.')[1] }}</em>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!--<div class="content" style="font-size:.2rem">
               <div class="detail-item" @click="toDetail(item)" v-for="item in data" :key="item.id">
                 <div class="detail-top">
                   <h1>{{ $t(searchName(item.tranType))}}</h1>
                   <div>
-                    <!--<span>{{$t(item.value)}}</span>-->
+                    &lt;!&ndash;<span>{{$t(item.value)}}</span>&ndash;&gt;
                     <span
                             :style="item.money > 0 ? 'color: red;':'color:#4fbb72;'">
                       {{item.money > 0 ? '+' : '' }}{{ item.money.toFixed(2) }}</span>
@@ -33,10 +49,10 @@
                   <div>
                     {{$t('lang.common.Balance')}}：<i class="user-money">{{ item.balance == null ? '0' : format_number(item.balance + item.money).split('.')[0] }}</i><em class="money-point">{{ item.balance == null ? '.00' :'.'+format_number(item.balance + item.money).split('.')[1] }}</em>
                   </div>
-<!--                  <div>{{$t('lang.user.balance')}}：{{ (item.balance + item.money).toFixed(2) }}</div>-->
+&lt;!&ndash;                  <div>{{$t('lang.user.balance')}}：{{ (item.balance + item.money).toFixed(2) }}</div>&ndash;&gt;
                 </div>
               </div>
-            </div>
+            </div>-->
           </template>
         </vue-better-scroll>
       </div>
@@ -44,6 +60,7 @@
     </div>
     <div class="dialog">
       <van-popup
+              class="mod-popup-box"
               v-model="timeShow"
               position="top" :style="{ height: '100%' }"
               :overlay-style="{backgroundColor:'rgba(0,0,0,.3)'}"
@@ -74,7 +91,7 @@
     </div>
     <div class="m-popup" v-show="showMask">
       <!--<div class="m-popup">-->
-      <div class="mask" style="opacity: 0.3;"></div>
+      <div class="mask" style="opacity: 0.8;"></div>
       <div ref="maskPop" class="content content-bottom">
         <div class="title">
           <!--选择交易类型-->
@@ -500,6 +517,10 @@
 
 <style lang="scss" scoped>
   .account-detail-box {
+    .account-detail-con{
+      background: #24252D;
+    }
+
     .detail-item {
       display: flex;
       flex-direction: column;
@@ -531,6 +552,9 @@
 
   .skin-gray {
     .account-detail-box {
+      .account-detail-con{
+        background: $skin-gray-con-bg;
+      }
     }
     .detail-item {
       .detail-bottom {

@@ -2,7 +2,7 @@
   <div class="index-content">
     <div class="index-header">
       <div class="left">
-        <h1>{{ serviceInfo && serviceInfo.indexTitle }}</h1>
+        <h1>{{ serviceInfo && serviceInfo.title }}</h1>
       </div>
       <div class="right">
         <div v-if="loginState"
@@ -567,9 +567,6 @@
             .tab-item {
               .iconfont {
                 color: #DEB995;
-              }
-              span {
-                color: #8f8f8f;
               }
             }
           }

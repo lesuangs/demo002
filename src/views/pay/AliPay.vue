@@ -491,12 +491,14 @@ export default {
         yzmNum: this.yzValue,
         remark: this.remark,
       }
+      this.$toast.loading(this.$t('lang.common.loading'))
       this.$http.account.queryTransfer(data).then((res) => {
         console.log(res,'提交了');
         let getData = res.data;
         //this.step++应该放在成功回调中
         if(res.code === 200){
-          if(res.data.code === 200){
+          if(res.data === true){
+            this.$toast.clear();
             this.step++;
           }else{
             let getMsg = getData.msg ? getData.msg : getData.message;

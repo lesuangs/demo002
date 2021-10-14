@@ -2,6 +2,7 @@
   <div class="balance balance-change-box">
     <Header :headObj="headObj" @leftClick="$router.push('/user')" @rightClick="timeShow=!timeShow"/>
     <van-popup
+            class="mod-popup-box"
             v-model="timeShow"
             position="top"
             :style="{ height: '100%' }"

@@ -1,5 +1,5 @@
 <template>
-  <div class="register register-box"  v-if="registerLimit">
+  <div class="register register-box">
     <!--<div class="tian-nav">-->
     <!-- <van-sticky style="width: 100%;"> -->
     <Header :headObj="headObj"
@@ -11,175 +11,169 @@
       <div class="form">
         <van-form @submit="onSubmit" @failed="onFailed">
           <van-field
-                  v-model="params.account"
-                  :label="$t('lang.register.user[0]')"
-                  :placeholder="$t('lang.register.user[1]')"
+                  v-model="regObj.account"
+                  :label="$t('lang.register.loginAccount[0]')"
+                  :placeholder="$t('lang.register.loginAccount[1]')"
                   label-width="80"
                   :clearable="true"
                   required
                   @blur="checkAccount"
                   :error-message="hasAccount ? $t('lang.register.hasValue[0]') : ''"
                   :rules="nameRules">
-            <!--            <span class="spanStyles">{{hasAccount}}{{ hasAccount ? $t('lang.register.user[3]') : '' }}</span>-->
+            <!--            <span class="spanStyles">{{hasAccount}}{{ hasAccount ? $t('lang.registerContent.accountAlreadyExists') : '' }}</span>-->
           </van-field>
 
           <van-field
-                  v-model="params.password"
+                  v-model="regObj.password"
                   :type="pwdType"
-                  :label="$t('lang.register.password[0]')"
+                  :label="$t('lang.register.userPwd[0]')"
                   :clearable="true"
                   label-width="80"
                   required
                   :right-icon="eyesIcon"
                   @click-right-icon="handleRightIcon('pwd')"
-                  :placeholder="$t('lang.register.password[1]')"
+                  :placeholder="$t('lang.register.userPwd[1]')"
                   :rules="pwdRules" />
           <van-field
-                  v-model="params.confirmPassword"
+                  v-model="regObj.confirmPassword"
                   :type="confirmType"
-                  :label="$t('lang.register.confirm_password[0]')"
+                  :label="$t('lang.register.confirmPwd[0]')"
                   :clearable="true"
                   label-width="80"
                   required
                   :right-icon="confirmEyes"
                   @click-right-icon="handleRightIcon('confirmPwd')"
-                  :placeholder="$t('lang.register.confirm_password[1]')"
-                  :rules="[{ required: true, message: $t('lang.register.confirm_password[1]') }]" />
-          <van-field
-                  v-if="registerLimit.fundPwd !==undefined && registerLimit.fundPwd !== '2'"
-                  v-model="params.fundPwd"
-                  type="digit"
-                  maxlength="4"
-                  :required="registerLimit.fundPwd === '1'?true:false"
-                  label-width="80"
-                  :clearable="true"
-                  :label="$t('lang.register.fund_pwd[0]')"
-                  :placeholder="$t('lang.register.fund_pwd[1]')"
-                  :rules="params.fundPwd !== ''?fundPwdRules:[]"></van-field>
-          <van-field
-                  v-if="registerLimit.fullName !==undefined && registerLimit.fullName !== '2'"
-                  v-model="params.fullName"
-                  :label="$t('lang.register.full_name[0]')"
-                  :required="registerLimit.fullName === '1'?true:false"
-                  label-width="80"
-                  :clearable="true"
-                  :placeholder="$t('lang.register.full_name[1]')"
-                  :rules="params.fullName !==  ''?fullNameRules:[]" />
-          <span class="spanStyles">{{ hasFullName ? $t('lang.register.full_name[2]') : '' }}</span>
-          <van-field
-                  v-if="registerLimit.phone !==undefined && registerLimit.phone !== '2'"
-                  v-model="params.phone"
-                  :label="$t('lang.register.phone[0]')"
-                  type="digit"
-                  :required="registerLimit.phone === '1'?true:false"
-                  label-width="80"
-                  :clearable="true"
-                  :placeholder="$t('lang.register.phone[1]')"
-                  :rules="params.phone !==  ''?phoneRules:[]" />
-
-          <van-field
-                  v-if="registerLimit.intrCode !==undefined && registerLimit.intrCode !== '2'"
-                  v-model="params.intrCode"
-                  :label="$t('lang.register.referral_code[0]')"
-                  label-width="80"
-                  :clearable="true"
-                  :required="registerLimit.intrCode === '1'?true:false"
-                  :placeholder="$t('lang.register.referral_code[1]')"
-                  :rules="params.intrCode !== ''?[{ required: true, message: $t('lang.register.referral_code[2]') }]:[]" />
-
-          <van-field
-                  v-if="registerLimit.birthday !==undefined && registerLimit.birthday !== '2'"
-                  v-model="params.birthday"
-                  :label="$t('lang.register.birthday[0]')"
-                  :required="registerLimit.birthday === '1'?true:false"
-                  label-width="80"
-                  :clearable="true"
-                  :placeholder="$t('lang.register.birthday[1]')"
-                  @click="showPicker=true"
-                  :rules="params.birthday !== ''?[{ required: true, message: $t('lang.register.birthday[2]') }]:[]" />
-
-          <span class="spanStyles">{{ hasPhone ? $t('lang.register.phone[2]') : '' }}</span>
-          <van-field
-                  v-if="registerLimit.email !==undefined && registerLimit.email !== '2'"
-                  v-model="params.email"
-                  :label="$t('lang.register.email[0]')"
-                  :required="registerLimit.email == 1?true:false"
-                  label-width="80"
-                  :clearable="true"
-                  :placeholder="$t('lang.register.email[1]')"
-                  :rules="params.email !==  ''?emailRules:[]" />
-
-        <!--  <van-field
-                  注册接口没有手机推广码
-                  v-if="registerLimit.intrMobileCode !==undefined && registerLimit.intrMobileCode !== '2'"
-                  v-model="params.intrMobileCode"
-                  :label="$t('lang.register.phone_code[0]')"
-                  :required="registerLimit.intrMobileCode === '1'?true:false"
-                  label-width="80"
-                  :clearable="true"
-                  :placeholder="$t('lang.register.phone_code[1]')"
-                  :rules="registerLimit.intrMobileCode === '1'?[{ required: true, message: $t('lang.register.phone_code[1]') }]:[]" />
-         -->
-          <van-field
-                  v-if="registerLimit.qq !==undefined && registerLimit.qq !== '2'"
-                  v-model="params.qq"
-                  :label="$t('lang.register.qq[0]')"
-                  type="digit"
-                  :required="registerLimit.qq === '1'?true:false"
-                  label-width="80"
-                  :clearable="true"
-                  :placeholder="$t('lang.register.qq[1]')"
-                  :rules="params.qq !==  ''?qqRules:[]" />
-          <van-field
-                  v-if="registerLimit.weixin !==undefined && registerLimit.weixin !== '2'"
-                  v-model="params.weixin"
-                  :label="$t('lang.register.weixin[0]')"
-                  :required="registerLimit.weixin === '1'?true:false"
-                  label-width="80"
-                  :clearable="true"
-                  :placeholder="$t('lang.register.weixin[1]')"
-                  :rules="params.weixin !== '' ? weChatRules : []" />
-
-
-          <div class="vCode" v-if="registerLimit.vCode !==undefined && registerLimit.vCode !== '2'">
+                  :placeholder="$t('lang.register.confirmPwd[1]')"
+                  :rules="[{ required: true, message: $t('lang.register.confirmPwd[1]') }]" />
+          <div class="vCode">
             <!--                :required="registerLimit.vCode == 1?true:false"-->
             <van-field
-                    v-model="params.vCode"
-                    :label="$t('lang.common.vCode[0]')"
+                    v-if="registerLimit.vCode !=undefined && registerLimit.vCode != 2"
+                    v-model="regObj.vCode"
+                    :label="$t('lang.registerContent.vCode[0]')"
                     label-width="80"
                     maxlength="4"
-                    :required="registerLimit.vCode === '1'?true:false"
+                    required
                     :clearable="true"
-                    :placeholder="$t('lang.common.vCode[1]')"
-                    :rules="[{ required: true, message: $t('lang.common.vCode[2]') }]"/>
+                    :placeholder="$t('lang.registerContent.vCode[1]')"
+                    :rules="[{ required: true, message: $t('lang.registerContent.vCode[2]') }]"/>
             <div class="code-img-box">
-              <img @click="getVerifyCode" :src="verifyCodeImg" alt="" class="mod-vode-img">
-              <!--              <img @click="handleChangeImg" :src="'/v/vCode?t=' + t" alt="">-->
+              <img @click="handleChangeImg" :src="'/v/vCode?t=' + t" alt="">
             </div>
           </div>
+          <van-field
+                  v-if="registerLimit.intrCode !=undefined && registerLimit.intrCode != 2"
+                  v-model="regObj.intrCode"
+                  :label="$t('lang.registerContent.invitationCode')"
+                  label-width="80"
+                  :clearable="true"
+                  :required="registerLimit.intrCode == 1?true:false"
+                  :placeholder="$t('lang.registerContent.pleaseEnterTheInvitationCode')"
+                  :rules="registerLimit.intrCode == 1?[{ required: true, message: $t('lang.registerContent.pleaseEnterTheInvitationCode') }]:[]"/>
+          <van-field
+                  v-if="registerLimit.fullName !=undefined && registerLimit.fullName != 2"
+                  v-model="regObj.fullName"
+                  :label="$t('lang.registerContent.realName[0]')"
+                  :required="registerLimit.fullName == 1?true:false"
+                  label-width="80"
+                  :clearable="true"
+                  :placeholder="$t('lang.registerContent.realName[1]')"
+                  @blur="checkFullName"
+                  :rules="registerLimit.fullName == 1?[{ required: true, message: $t('lang.registerContent.realName[1]') }]:[]" />
+          <span class="spanStyles">{{ hasFullName ? $t('lang.registerContent.realName[2]') : '' }}</span>
+          <van-field
+                  v-if="registerLimit.email !=undefined && registerLimit.email != 2"
+                  v-model="regObj.email"
+                  :label="$t('lang.registerContent.emailInfo[0]')"
+                  :required="registerLimit.email == 1?true:false"
+                  label-width="80"
+                  required
+                  :clearable="true"
+                  :placeholder="$t('lang.registerContent.emailInfo[1]')"
+                  :rules="registerLimit.email == 1?emailRules:[]" />
+          <van-field
+                  v-if="registerLimit.phone !=undefined && registerLimit.phone != 2"
+                  v-model="regObj.phone"
+                  :label="$t('lang.registerContent.phoneInfo[0]')"
+                  type="digit"
+                  :required="registerLimit.phone != 1?true:false"
+                  label-width="80"
+                  :clearable="true"
+                  :placeholder="$t('lang.registerContent.phoneInfo[1]')"
+                  @blur="checkPhone"
+                  :rules="registerLimit.phone != 1?phoneRules:[]" />
+          <span class="spanStyles">{{ hasPhone ? $t('lang.registerContent.phoneInfo[2]') : '' }}</span>
+          <van-field
+                  v-if="registerLimit.intrMobileCode !=undefined && registerLimit.intrMobileCode != 2"
+                  v-model="regObj.intrMobileCode"
+                  :label="$t('lang.registerContent.phonePromotion[0]')"
+                  :required="registerLimit.intrMobileCode == 1?true:false"
+                  label-width="80"
+                  :clearable="true"
+                  :placeholder="$t('lang.registerContent.phonePromotion[1]')"
+                  :rules="registerLimit.intrMobileCode == 1?[{ required: true, message: $t('lang.registerContent.phonePromotion[1]') }]:[]" />
+          <van-field
+                  v-if="registerLimit.qq !=undefined && registerLimit.qq != 2"
+                  v-model="regObj.qq"
+                  :label="$t('lang.registerContent.qqNumber[0]')"
+                  type="digit"
+                  :required="registerLimit.qq == 1?true:false"
+                  label-width="80"
+                  :clearable="true"
+                  :placeholder="$t('lang.registerContent.qqNumber[1]')"
+                  :rules="registerLimit.qq == 1?qqRules:[]" />
+          <van-field
+                  v-if="registerLimit.weixin !=undefined && registerLimit.weixin != 2"
+                  v-model="regObj.weixin"
+                  :label="$t('lang.registerContent.weChat[0]')"
+                  :required="registerLimit.weixin == 1?true:false"
+                  label-width="80"
+                  :clearable="true"
+                  :placeholder="registerLimit.wechatPlaceholder"
+                  :rules="registerLimit.weixin == 1?weChatRules:[]" />
+          <van-field
+                  v-if="registerLimit.birthday !=undefined && registerLimit.birthday != 2"
+                  v-model="regObj.birthday"
+                  :label="$t('lang.registerContent.bornInfo[0]')"
+                  :required="registerLimit.birthday == 1?true:false"
+                  label-width="80"
+                  :clearable="true"
+                  :placeholder="$t('lang.registerContent.bornInfo[1]')"
+                  @click="showPicker=true"
+                  :rules="registerLimit.birthday == 1?[{ required: true, message: $t('lang.registerContent.bornInfo[2]') }]:[]" />
+          <van-field
+                  v-if="registerLimit.fundPwd == 1"
+                  v-model="regObj.fundPwd"
+                  type="digit"
+                  maxlength="4"
+                  :required="registerLimit.fundPwd == 1?true:false"
+                  label-width="80"
+                  :clearable="true"
+                  :label="$t('lang.registerContent.fundPwd[0]')"
+                  :placeholder="$t('lang.registerContent.fundPwd[1]')"
+                  :rules="registerLimit.fundPwd == 1?fundPwdRules:[]"></van-field>
           <div class="m-form-tips">
             <h3>{{ $t('lang.changePassword.passwordRules') }}：</h3>
-            <p>{{ $t('lang.register.password[2]') }}</p>
+            <p>{{ $t('lang.register.userPwd[2]') }}</p>
           </div>
 
           <div class="step-button-box">
-     <!--       <button class="btn-type2"
-                    block native-type="submit">{{ $t('lang.loginContent.registerNow') }}</button>-->
-
             <button class="btn-type2"
-                    :class="{'disable':!isDisabled}"
-                    :disabled="!isDisabled"
+                    :class=" disabled ? 'disable' : ''"
+                    :disabled="disabled"
                     block native-type="submit">{{ $t('lang.loginContent.registerNow') }}</button>
+
+
           </div>
         </van-form>
       </div>
-      <div class="tip"> {{ $t('lang.register.help[2]') }}
-        <em class="theme-color" @click="$router.push('/login')">{{ $t('lang.register.help[3]') }}</em>
+      <div class="tip"> {{ $t('lang.registerContent.alreadyHaveAnAccount') }}？
+        <em class="theme-color" @click="$router.push('/login')">{{ $t('lang.registerContent.signInNow') }}</em>
       </div>
       <footer class="footerTip">
-        <p> {{ $t('lang.register.help[4]') }}</p>
-        {{ $t('lang.register.agreement[0]') }}
-        <em class="link-color" @click="handleOpenAgree">"{{ $t('lang.register.agreement[1]') }}"</em>
+        <p> {{ $t('lang.reg.zhuYiShiXiang') }}</p>
+        {{ $t('lang.registerContent.agreedTreaties') }}
+        <em class="link-color" @click="handleOpenAgree">"{{ $t('lang.registerContent.openAgreement') }}"</em>
       </footer>
     </div>
     <van-popup v-model="showPicker" position="bottom" :overlay="false">
@@ -213,22 +207,21 @@
     },
     data() {
       return {
-        params:{
+        regObj: {
           account: '',
           password: '',
           confirmPassword: '',
-          agree: 'on',
-          // fundPwd: '0000',
+          agree: true,
+          fundPwd: '',//不设置默认资金密码了
           vCode: '',
-          intrCode:'',//推荐码
-          weixin:'',
-          phone:'',
-          email:'',
-          qq:'',
-          fullName:'',
-          fundPwd:'',
-          // phoneCode:'',
-          birthday:'',
+          // intrCode: '',
+          // weixin: '',
+          // qq: '',
+          // intrMobileCode: '',
+          // phone: '',
+          // email: '',
+          // fullName: '',
+          // birthday: '',
 
         },
         t: Date.now(),
@@ -242,38 +235,34 @@
         eyesIcon: require('../assets/img/login/yanjing.png'),
         confirmEyes: require('../assets/img/login/yanjing.png'),
         nameRules: [
-          {required: true, message: this.$t('lang.register.user[2]')},
-          {pattern: REG_RULE.username.reg, message: this.$t('lang.register.user[2]')}
+          {required: true, message: this.$t('lang.register.loginAccount[2]')},
+          {pattern: REG_RULE.username.reg, message: this.$t('lang.register.loginAccount[2]')}
         ],
         pwdRules: [
-          {required: true, message: this.$t('lang.register.password[2]')},
-          {pattern: REG_RULE.loginPwd.reg, message: this.$t('lang.register.password[2]')}
+          {required: true, message: this.$t('lang.register.userPwd[2]')},
+          {pattern: REG_RULE.loginPwd.reg, message: this.$t('lang.register.userPwd[2]')}
         ],
         fundPwdRules: [
-          {required: true, message: this.$t('lang.register.fund_pwd[0]')}, //'请输入取款密码'},
-          {pattern: REG_RULE.fundPsw.reg, message: this.$t('lang.register.fund_pwd[1]')} //'请输入长度为6位数字'}
+          {required: true, message: this.$t('lang.register.fundPwdRules[0]')}, //'请输入取款密码'},
+          {pattern: /^\d{4}$/, message: this.$t('lang.register.fundPwdRules[1]')} //'请输入长度为6位数字'}
         ],
         weChatRules: [
-          {required: true, message: this.$t('lang.register.weixin[1]')},
-          {pattern: REG_RULE.weChat.reg, message: this.$t('lang.register.weixin[2]')}
+          {required: true, message: '请输入微信号'},
+          {pattern: REG_RULE.weChat.reg, message: '请输入正确微信号'}
         ],
         qqRules: [
-          {required: true, message: this.$t('lang.register.qq[1]')},
-          {pattern: REG_RULE.qq.reg, message: this.$t('lang.register.qq[2]')}
+          {required: true, message: '请输入QQ号'},
+          {pattern: REG_RULE.qq.reg, message: '请输入正确QQ号'}
         ],
         emailRules: [
-          {required: true, message: this.$t('lang.register.email[1]')},
-          {pattern: REG_RULE.email.reg, message: this.$t('lang.register.email[2]')}
+          {required: true, message: '请输入邮箱'},
+          {pattern: REG_RULE.email.reg, message: '请输入正确邮箱'}
         ],
         phoneRules: [
-          {required: true, message: this.$t('lang.register.phone[1]')},
-          {pattern: REG_RULE.mobile.reg, message: this.$t('lang.register.phone[2]')}
+          {required: true, message: '请输入手机号'},
+          {pattern: REG_RULE.mobile.reg, message: '请输入正确手机号'}
         ],
-        fullNameRules: [
-          {required: true, message: this.$t('lang.register.full_name[1]')},
-          {pattern: REG_RULE.fullName.reg, message: this.$t('lang.register.full_name[2]')}
-        ],
-        // registerLimit: {},
+        registerLimit: {},
         showPicker: false,
         minDate: new Date(1949, 0, 1),
         maxDate: new Date(2025, 10, 1),
@@ -285,93 +274,39 @@
     },
     computed: {
       ...mapState([
-        'isLogin',
-        'regLimitList',
-        'verifyCodeImg'
+        'isLogin'
       ]),
-      registerLimit(){
-        return this.regLimitList
+      check_userName() {
+        return REG_RULE.username.reg.test(this.regObj.account)
       },
-      check_name(){
-        return REG_RULE.username.reg.test(this.params.account);
+      check_loginPwd() {
+        return REG_RULE.loginPwd.reg.test(this.regObj.password)
       },
-      check_pwd(){
-        return REG_RULE.loginPwd.reg.test(this.params.password);
-      },
-      check_confirm_pwd(){
-        if(this.params.confirmPassword !== this.params.password){
-          return false;
-        }else{
+      check_rePwd(){
+        if(this.regObj.password === this.regObj.confirmPassword){
           return true;
+        }else{
+          return false;
         }
       },
-      check_code(){
-        return REG_RULE.verifyCode.reg.test(this.params.vCode);
-      },
-      check_fullName(){
-        return REG_RULE.fullName.reg.test(this.params.fullName);
-      },
-      check_weixin(){
-        return REG_RULE.weChat.reg.test(this.params.weixin);
-      },
-      check_email(){
-        return REG_RULE.email.reg.test(this.params.email);
-      },
-      check_phone(){
-        return REG_RULE.mobile.reg.test(this.params.phone);
-      },
-      check_qq(){
-        return REG_RULE.qq.reg.test(this.params.qq);
+      check_vCode(){
+        return REG_RULE.verifyCode.reg.test(this.regObj.vCode)
       },
       check_fundPwd(){
-        return REG_RULE.fundPwd.reg.test(this.params.fundPwd);
+        return this.registerLimit.fundPwd != 1 || REG_RULE.verifyCode.reg.test(this.regObj.fundPwd)
       },
-      check_intrCode(){
-        return REG_RULE.intrCode.reg.test(this.params.intrCode);
-      },
-      check_phoneCode(){
-        return REG_RULE.common.reg.test(this.params.phoneCode);
-      },
-/*      isDisabled() {
-        if(!this.check_userName || !this.check_loginPwd || !this.check_nickname ||
-          this.hasAccount || !this.rePassword){
+      disabled() {
+        if(!this.check_userName || !this.check_loginPwd || !this.check_vCode || this.check_fundPwd){
           return true;
         }else{
           return false;
         }
-        // const {account, password, confirmPassword, vCode} = this.params;
+        // const {account, password, confirmPassword, vCode} = this.regObj;
         // if (account === '' && password === '' && confirmPassword === '' && vCode === '') {
         //   return true
         // }
         // return false
-      },*/
-      isDisabled(){
-        let {fullName,weixin,qq,email,phone,fundPwd,vCode,intrCode} = this.params;
-        if((this.isRepeat || !this.check_name || !this.check_pwd || !this.check_confirm_pwd) ||
-          (fullName && !this.check_fullName ) ||
-          (weixin && !this.check_weixin) ||
-          (email && !this.check_email) ||
-          (qq && !this.check_qq) ||
-          (phone && !this.check_phone) ||
-          (fundPwd && !this.check_fundPwd) ||
-          (vCode && !this.check_code) ||
-          (intrCode && !this.check_intrCode) ||
-          (this.regLimitList.fullName === '1' && !this.check_fullName)||
-          (this.regLimitList.weixin === '1' && !this.check_weixin)||
-          (this.regLimitList.phone === '1' && !this.check_phone)||
-          (this.regLimitList.email === '1' && !this.check_email)||
-          (this.regLimitList.phone === '1' && !this.check_phone)||
-          (this.regLimitList.fundPwd === '1' && !this.check_fundPwd)||
-          (this.regLimitList.vCode === '1' && !this.check_code)||
-          (this.regLimitList.intrCode === '1' && !this.check_intrCode)||
-          (this.regLimitList.qq === '1' && !this.check_qq) ||
-                this.hasAccount
-        ){
-          return false;
-        }else{
-          return true;
-        }
-      },
+      }
     },
     methods: {
       ...mapMutations({
@@ -381,22 +316,20 @@
         'login',
         'loginOut',
         'getUserInfo',
-        'getStatus',
-        'getRegLimit',
-        'getVerifyCode'
+        'getStatus'
       ]),
       onFailed(errorInfo){
         console.log(errorInfo,'errorInfo2222222222')
       },
       asyncConPwd(){
-        return this.params.password === this.params.confirmPassword
+        return this.regObj.password === this.regObj.confirmPassword
       },
       handleOpenAgree() {
         this.isAgree = true
-        this.params.agree = 'on'
+        this.regObj.agree = 'on'
       },
       handleBirthday() {
-        this.params.birthday = utils.dateFormat(this.currentDate, 2)
+        this.regObj.birthday = utils.dateFormat(this.currentDate, 2)
         this.showPicker = false
       },
       handleRightIcon(type) {
@@ -422,70 +355,39 @@
         }
       },
       checkAccount() {
-        this.$http.users.getCheckUnique(this.params.account).then(res => {
-          this.hasAccount = !res.data
+        this.$http.users.getCheckUnique(0, this.regObj.account).then(res => {
+          this.hasAccount = res.data
         })
       },
-/*      checkFullName() {
-        //只校验账号
-        this.$http.users.getCheckUnique(1, this.params.fullName).then(res => {
-          this.hasFullName = !res.data
+      checkFullName() {
+        this.$http.users.getCheckUnique(1, this.regObj.fullName).then(res => {
+          this.hasFullName = res.data
         })
       },
       checkPhone() {
-        this.$http.users.getCheckUnique(2, this.params.phone).then(res => {
-          this.hasPhone = !res.data
+        this.$http.users.getCheckUnique(2, this.regObj.phone).then(res => {
+          this.hasPhone = res.data
         })
-      },*/
+      },
       handleChangeImg() {
         this.t = Date.now()
       },
-      onSubmit(val) {
-        console.log(val,'onSubmitonSubmitonSubmit')
-        /*if (this.params.password !== this.params.confirmPassword) {
-          return this.$toast(this.$t('lang.register.confirm_password[2]'))
+      onSubmit() {
+        if (this.regObj.password !== this.regObj.confirmPassword) {
+          return this.$toast(this.$t('lang.register.confirmPwd[2]'))
         }
         if (this.hasAccount || this.hasFullName || this.hasPhone) {
           return this.$toast('请重新输入！')
-        }*/
-        this.$toast.loading(this.$t('lang.common.loading'))
-        let params = {
-          account:this.params.account,
-          password:this.params.password,
-          confirmPassword:this.params.confirmPassword,
-          // fundPwd:this.params.fundPwd,
-          // agree:this.params.agree,
-          // vCode:this.params.vCode,
-          // intrCode:this.params.intrCode,
-          // weixin:this.params.weixin,
-          // phone:this.params.phone,
-          // qq:this.params.qq,
-          // fullName:this.params.fullName,
-          // birthday:this.params.birthday,
-          tenantCode:'model'
-        };
-        if(this.regLimitList){
-          let {fullName,phone,weixin,qq,email,birthday,fundPwd,vCode,intrCode} = this.regLimitList;
-          if( fullName !== '2') params.fullName = this.params.fullName;
-          if( phone !== '2') params.phone = this.params.phone;
-          if( weixin !== '2') params.weixin = this.params.weixin;
-          if( qq !== '2') params.qq = this.params.qq;
-          if( email !== '2') params.email = this.params.email;
-          if( birthday !== '2') params.birthday = this.params.birthday;
-          if( fundPwd !== '2') params.fundPwd = this.params.fundPwd;
-          if( vCode !== '2') params.vCode = this.params.vCode;
-          if( intrCode !== '2') params.intrCode = this.params.intrCode;
-          // if( intrMobileCode !== '2') params.phoneCode = this.params.phoneCode;
         }
-        const data = Object.assign({}, params)
+        const data = Object.assign({}, this.regObj)
         // if (data.agree == '') {
         //   this.$toast('请先阅读开户协议')
         // } else {
         this.$http.users.register(data)
           .then((res) => {
-            if (res.code === 200) {
-              this.$toast.clear();
-              this.$toast.success(this.$t('lang.register.tips[0]'));
+            if (res) {
+              this.$toast.success(this.$t('lang.registerContent.tips[0]'));
+              console.log('注册res', res)
               localStorage.setItem('isLogin', JSON.stringify(true));
               this.setData({key: 'isLogin', value: true});
               this.setData({key: 'accountType', value: 'HY'});
@@ -498,19 +400,12 @@
                 this.$router.push('/user');
               }, 2000);
             } else {
-              this.$toast.clear();
-              this.getVerifyCode();
-              // this.t = Date.now()
-              const geData = res.msg ? res.msg : this.$t('lang.common.error_alert[0]');
-              this.$toast.fail({
-                message: geData,
-                icon: 'warning',
-                className: 'warning-toast'
-              });
+              this.t = Date.now()
+              this.$toast.fail('注册失败')
             }
           })
           .catch((err) => {
-            this.getVerifyCode()
+            this.handleChangeImg()
             this.$toast.fail(err.data.msg)
           })
       }
@@ -522,29 +417,27 @@
       new Object();
       if (url.indexOf("?") != -1) {
         let str = url.substr(1);
-        this.params.intrCode = str
+        this.regObj.intrCode = str
       }
     },
     created() {
-      this.getVerifyCode();
-      this.getRegLimit();
-/*
+
       this.$http.users.getLimit().then(res => {
         this.registerLimit = res.data
         console.log(this.registerLimit)
       }).catch(err => {
         console.log(err)
-      })*/
+      })
     },
   }
 </script>
 
 <style lang="scss" scoped>
   .register-box{
-   /* &,.content{
+    &,.content{
       height:100%;
       position: relative;
-    }*/
+    }
     /deep/.van-form{
       .van-cell{
         padding:0 px2rem(17px);
@@ -601,10 +494,10 @@
     .footerTip{
       margin:px2rem(30px);
       padding:px2rem(8px) 0;
-    /*  position: absolute;
+      position: absolute;
       bottom:px2rem(50px);
       left: 0;
-      right: 0;*/
+      right: 0;
       line-height: px2rem(20px);
       border-top:1px #ccc solid;
       font-size: px2rem(13px);

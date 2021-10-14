@@ -2,50 +2,37 @@
   <div class="tian-content">
     <div class="tab-head">
       <i class="go-back iconfont iconic-left"
-         @click="$router.push('/user')"></i>
+         @click="$router.back(-1)"></i>
       <div>
-<!--        <template v-for="(v, i) in tabList">-->
-<!--          <span @click="tabClick(i)"-->
-<!--                :class="[tabActive == i ? 'active' : '']"-->
-<!--                :key="i">-->
-<!--            {{ $t(v) }}-->
-<!--          </span>-->
-<!--      </template>-->
-
-        <li v-for="(list,listIndex) in navigationList"
-            :key="list.id"
-            @click.stop="goToThreeGame(list.type)">
-          <div>
-            <span>{{list.name}}</span>
-          </div>
-        </li>
-
+        <template v-for="(v, i) in tabList">
+          <span @click="tabClick(i)"
+                :class="[tabActive == i ? 'active' : '']"
+                :key="i">
+            {{ $t(v) }}
+          </span>
+        </template>
       </div>
       <i class="icon iconfont iconlishi"
          @click="noteClick(tabActive)"
-         :style="tabActive===0?'right:0.3rem':'right:0.3rem'"></i>
-<!--      <i v-if="tabActive===0"-->
-<!--         class="icon iconfont iconic-filter"-->
-<!--         @click="getSelect"-->
-<!--         style="right:0.35rem;"></i>-->
+         :style="tabActive===0?'right:0.8rem':'right:0.3rem'"></i>
+      <i v-if="tabActive===0"
+         class="icon iconfont iconic-filter"
+         @click="getSelect"
+         style="right:0.35rem;"></i>
     </div>
-    <LotteryNote :timeShow="timeShow"
-                 :gameId="gameId"
-                 :listData="listData"
-                 :startTime="startTime"
-                 :endTime="endTime"
-                 :columns="columns"
-                 :tabActive="tabActive"
-                 @showCpDel="showCpDel(arguments)"
-                 v-if="$route.query.type ==='6'"/>
     <GameNote
             :timeShow="timeShow"
             :startTime="startTime"
             :endTime="endTime"
             @showGameDel="showGameDel"
-            :tabActive="tabActive"
-            v-else/>
-
+            v-if="Number(tabActive) === 1"/>
+    <LotteryNote :timeShow="timeShow"
+                 :gameId="gameId"
+                 :listData="listData"
+                 :startTime="startTime"
+                 :endTime="endTime"
+                 @showCpDel="showCpDel(arguments)"
+                 v-else/>
     <!--    <div class="footer-padd"></div>-->
     <!--    <Footer :actived="active"/>-->
     <!--时间选择弹窗-->
@@ -85,7 +72,7 @@
       </div>
     </van-popup>
     <!--彩种选择弹窗-->
-<!--    <transition name="van-slide-up">
+    <transition name="van-slide-up">
       <LotteryPicker
               :value="value"
               :VList="VList"
@@ -95,7 +82,7 @@
               @btnClick="btnClick"
               :columns="columns"
               v-if="isSelect"/>
-    </transition>-->
+    </transition>
 
     <!--彩票订单详情-->
     <transition name="van-slide-up">
@@ -117,7 +104,7 @@
   </div>
 </template>
 <script>
-  import {mapState ,mapActions} from 'vuex';
+  import {mapState} from 'vuex';
   import {LANG} from "../utils/mode";
   import DatePicker from '../commons/datePicker/DatePicker'
   import utils from '../utils/utils'
@@ -128,14 +115,12 @@
   import GameNoteDel from './note/GameNoteDel'
   import LotteryPicker from './note/LotteryPicker'
 
-
   export default {
     name: 'Note',
     computed: {
       ...mapState([
-        'lang',
-        'navigationList'
-      ]),
+        'lang'
+      ])
     },
     components: {
       Footer,
@@ -157,7 +142,7 @@
         listData: {},
         columns: [],
         showSet: false,
-        tabList: ['lang.loginContent.lottery', 'lang.loginContent.sports', 'lang.header.electronic','lang.loginContent.chess', 'lang.loginContent.fishing'],
+        tabList: ['lang.loginContent.lottery', 'lang.header.electronic'],
         tabActive: 0,
         isSelect: false,
         value: [this.$t('lang.RechargeData.All'), this.$t('lang.RechargeData.All')],
@@ -181,11 +166,11 @@
         startTime1: new Date(),
         endTime1: new Date(),
         startTime2: new Date(),
-        endTime2: new Date(),
+        endTime2: new Date()
       }
     },
     created() {
-      this.getNavigation();
+
       const listData = {}
       let list = []
       if (!sessionStorage.getItem('LotteryTypeList')) {
@@ -209,9 +194,6 @@
       }
     },
     methods: {
-      ...mapActions([
-        'getNavigation'
-      ]),
     /*  reset() {
         this.value = 'lang.RechargeData.All'
         this.VList = [0, 0]
@@ -343,13 +325,12 @@
         this.columns = typeList.filter(type => {
           return (type.children.length > 0)
         })
-        console.log(this.columns, typeList, 'columns9999999999')
+        console.log(typeList, 'columns9999999999')
       },
       showCpDel(item) {
-        console.log(item);
         this.cpDelShow = true
         this.cpDataDel = item[0]
-        this.cpDataGame = item[0]
+        this.cpDataGame = item[1]
         // this.gameType = item[1]
       },
       showGameDel(item) {
@@ -484,17 +465,7 @@
           default:
             break
         }
-      },
-      goToThreeGame(id) {
-        console.log(id,'iddddd');
-        this.$router.push({
-          path: '/Note',
-          query: {
-            type: id
-          }
-        })
       }
-
     }
   }
 </script>
@@ -514,11 +485,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 0 0.3rem;
-      font-size: 16px;
+      font-size: 0.36rem;
       color: #fff;
-        li {
-            list-style:none
-        }
       .go-back {
         position: absolute;
         left: px2rem(15px);
@@ -541,7 +509,7 @@
       span {
         /*width: 0.8rem;*/
         padding: 0.06rem 0;
-        margin: 0 0.2rem;
+        margin: 0 0.4rem;
         opacity: 0.6;
         text-align: center;
       }

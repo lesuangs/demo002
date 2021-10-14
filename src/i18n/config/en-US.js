@@ -108,85 +108,18 @@ const en = {
     register: {
       accountType: ['Type', 'Member', 'Agent'],
       userNickname: ['Nickname', 'Enter user nickname', 'The nickname consists of 2-15 Chinese characters, letters or numbers'],
-      // loginAccount: ['Account', 'Enter the login account number', 'The account starts with a letter and consists of 6-10 letters and numbers or underscores'],
+      loginAccount: ['Account', 'Enter the login account number', 'The account starts with a letter and consists of 6-10 letters and numbers or underscores'],
       actualName: ['Real name', 'Enter your real name', 'The real name is 2 to 20 Chinese characters'],
       memberPhone: ['Member phone', 'Enter the member phone number', 'The phone number is 11 digits'],
-      // userPwd: ['Password', 'Enter the password', 'The password consists of 6-12 letters and numbers or underscores, not pure numbers'],
+      userPwd: ['Password', 'Enter the password', 'The password consists of 6-12 letters and numbers or underscores, not pure numbers'],
       oldPwd: ['Old password', 'Enter the old password', 'The password must be at least 6 digits'],
-      // confirmPwd: ['Confirm password', 'Enter the password again', 'The two passwords are inconsistent'],
+      confirmPwd: ['Confirm password', 'Enter the password again', 'The two passwords are inconsistent'],
       changeNewPwd: ['New password', 'Please enter a new password'],
       changeRePwd: ['Confirm new password', 'New password again'],
       hasValue: ['Account number already exists'],
-      // fundPwdRules: ['Please enter the withdrawal password','Please enter a length of 4 digits'],
-
-      account: ['Account', 'Enter the login account number'],
-      user: ['Account',' Enter account number ', 'Enter 4-12 English characters or numbers, and start with a letter! ','Account duplicate ','Username cannot be empty ','Checking account name '],
-      password: ['Password', 'Enter a password', 'Enter 6-12 English or numbers!', 'Password cannot be empty!'],
-      confirm_password: ['Confirm password', 'Enter the password again', 'Inconsistent passwords'],
-      full_name: ['Real name ',' Enter real name','Please enter a valid real name'],
-      nickname: ['User nickname', 'Enter user nickname', 'Enter 2-15 Chinese characters, letters or numbers'],
-      weixin: ['Wechat ',' Enter wechat','The wechat signal format is incorrect'],
-      email: ['Email ',' Enter email','The email account format is incorrect'],
-      phone: ['Mobile number ',' Enter mobile number','The phone number format is incorrect'],
-      qq: ['QQ',' Enter QQ number','The QQ id format is incorrect'],
-      fund_pwd:['Fund password ',' Enter fund password ',' Fund password consists of 4 digits'],
-      phone_code:['Mobile promotional code ',' Enter mobile promotional code ',' Promotional code format is not correct'],
-      birthday:['Birthday','Choose a birthday','Birthdays cannot be empty'],
-      referral_code: ['Invite code','Enter the invite code'],
-      help: [
-        'Forget the password? ',
-        'No account? ',
-        'Have an account? ',
-        'Log in',
-        'Precautions'
-      ],
-      agreement: ['Registration means that you have agreed to the opening treaties','Account opening agreement'],
-      tips: ['Registered successfully, will log in soon'],
+      fundPwdRules: ['Please enter the withdrawal password','Please enter a length of 4 digits'],
 
 
-
-
-
-    },
-    registerContent: {
-      accountNumber: 'Account number',//账号
-      verificationCode: 'Verification code',//验证码
-      invitationCode: 'Invitation code',
-      pleaseConfirmYourPassword: 'Please confirm your password',//请确认密码
-      pleaseEnterTheInvitationCode: 'Invitation code',//请输入邀请码
-      accountAlreadyExists: 'Account already exists',//账号已存在
-      alreadyHaveAnAccount: 'Already have an account',//已有账号
-      signInNow: 'Sign in now',//立即登录
-      agreedTreaties: 'Registration means that you have agreed to the opening treaties',//注册代表您已同意各项开启条约
-      openAgreement: 'Account opening agreement',//开户协议
-      shuRuGuiZe: 'The account number is composed of 6-10 letters, numbers or underscores',//账号由6-10位字母、数字或下划线组成
-      pwdRule: 'The password consists of 6-12 letters and numbers or underscores, not pure numbers',//密码由6-12位字母和数字或下划线组成
-      password: ['Password', 'Enter the password'],//'密码','请输入密码'
-      confirmPassword: ['Confirm Password', 'Enter the password again', 'Inconsistent password input'],//'确认密码','请再次输入密码'.'密码输入不一致'
-      Account: ['Account', 'Enter the account number'],//'账号','请输入账号'
-      vCode: ['Code', 'Enter the code', 'Code cannot be empty'],//'验证码','请输入验证码','验证码不能为空'
-      tips: ['login was successful,ready to sign in'],
-      error_tips: ['login has failed'],
-      fundPwd: ['Withdrawals password','Enter 4-digit withdrawal password'],
-
-
-
-
-      // accountNumber: 'Account number',//账号
-      // password: 'Password',//密码
-      // confirmPassword: 'Confirm password',//确认密码
-      // verificationCode: 'Verification code',//验证码
-      // invitationCode: 'Invitation code',
-      // pleaseConfirmYourPassword: 'Please confirm your password',//请确认密码
-      // pleaseEnterTheInvitationCode: 'Please enter the invitation code',//请输入邀请码
-      // accountAlreadyExists: 'Account already exists',//账号已存在
-      // alreadyHaveAnAccount: 'Already have an account',//已有账号
-      // signInNow: 'Sign in now',//立即登录
-      // agreedTreaties: 'Registration means that you have agreed to the opening treaties',//注册代表您已同意各项开启条约
-      // openAgreement: 'Account opening agreement',//开户协议
-      // shuRuGuiZe: 'Please enter a length between 6-16, a combination of numbers/letters/underscores',//'请输入长度为6-16之间，由数字/字母/下划线组合'
-      // pwdRule: 'Password consists of 6-16 letters or numbers',//密码由6-16位字母或数字组成
-      // Account: 'Account',//账号
     },
     lotteryTips: {
       title: 'Rules of play',//玩法规则,
@@ -345,9 +278,6 @@ const en = {
       quickRegister: 'Quick Registration',//快速注册
       register: 'Register',//注册
       lottery: 'Lottery',//彩票
-      sports: 'Sports',//体育
-      chess: 'Chess',//棋牌
-      fishing: 'Fishing',//捕鱼
       registerNow: 'Register',//立即注册
       retrievePassword: 'Retrieve password',//找回密码
       PLZenterUserName: 'Please enter the correct user name',//请输入用户名
@@ -363,7 +293,52 @@ const en = {
       noLogin: 'You haven\'t signed in yet',//您还没有登录
       loginTimeout: 'Timeout，Sign in again.',
     },
+    registerContent: {
+      accountNumber: 'Account number',//账号
+      verificationCode: 'Verification code',//验证码
+      invitationCode: 'Invitation code',
+      pleaseConfirmYourPassword: 'Please confirm your password',//请确认密码
+      pleaseEnterTheInvitationCode: 'Invitation code',//请输入邀请码
+      accountAlreadyExists: 'Account already exists',//账号已存在
+      alreadyHaveAnAccount: 'Already have an account',//已有账号
+      signInNow: 'Sign in now',//立即登录
+      agreedTreaties: 'Registration means that you have agreed to the opening treaties',//注册代表您已同意各项开启条约
+      openAgreement: 'Account opening agreement',//开户协议
+      shuRuGuiZe: 'The account number is composed of 6-10 letters, numbers or underscores',//账号由6-10位字母、数字或下划线组成
+      pwdRule: 'The password consists of 6-12 letters and numbers or underscores, not pure numbers',//密码由6-12位字母和数字或下划线组成
+      password: ['Password', 'Enter the password'],//'密码','请输入密码'
+      confirmPassword: ['Confirm Password', 'Enter the password again', 'Inconsistent password input'],//'确认密码','请再次输入密码'.'密码输入不一致'
+      Account: ['Account', 'Enter the account number'],//'账号','请输入账号'
+      vCode: ['Code', 'Enter the code', 'Code cannot be empty'],//'验证码','请输入验证码','验证码不能为空'
+      tips: ['login was successful,ready to sign in'],
+      error_tips: ['login has failed'],
+      fundPwd: ['Withdrawals password','Enter 4-digit withdrawal password'],
 
+      realName: ['RealName','Enter your real name','The real name already exists'],
+      emailInfo: ['Email','Enter email address'],
+      phoneInfo: ['Mobile phone no.','Enter mobile phone number','The mobile number already exists'],
+      phonePromotion: ['Mobile promotion code','Enter mobile promotional code'],
+      qqNumber: ['QQ','Enter QQ id'],
+      weChat: ['WeChat'],
+      bornInfo: ['Birthday','Please choose birthday','Enter the verification code'],
+
+
+      // accountNumber: 'Account number',//账号
+      // password: 'Password',//密码
+      // confirmPassword: 'Confirm password',//确认密码
+      // verificationCode: 'Verification code',//验证码
+      // invitationCode: 'Invitation code',
+      // pleaseConfirmYourPassword: 'Please confirm your password',//请确认密码
+      // pleaseEnterTheInvitationCode: 'Please enter the invitation code',//请输入邀请码
+      // accountAlreadyExists: 'Account already exists',//账号已存在
+      // alreadyHaveAnAccount: 'Already have an account',//已有账号
+      // signInNow: 'Sign in now',//立即登录
+      // agreedTreaties: 'Registration means that you have agreed to the opening treaties',//注册代表您已同意各项开启条约
+      // openAgreement: 'Account opening agreement',//开户协议
+      // shuRuGuiZe: 'Please enter a length between 6-16, a combination of numbers/letters/underscores',//'请输入长度为6-16之间，由数字/字母/下划线组合'
+      // pwdRule: 'Password consists of 6-16 letters or numbers',//密码由6-16位字母或数字组成
+      // Account: 'Account',//账号
+    },
     withDraw: {
       tiXianTongGuo: 'After the withdrawal is approved, the withdrawal funds will arrive within 24 hours at the latest!',//提现通过后，提现资金最晚24小时内到账！
       mingRiTiKuna: 'The number of withdrawals today has been exceeded, please apply for withdrawal tomorrow!',//今日提现次数已超额，请明日再申请提款！
@@ -614,10 +589,9 @@ const en = {
       hasWon: 'Has won',//已中奖
       noDraw: 'No draw',//未开奖
 
-
       orderCancelled: 'Cancelled',//已撤单
       bets: 'bets',//投注
-      noteNumber: 'Note number',//注单号
+
 
     },
     DatePicker: {

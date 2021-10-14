@@ -1,5 +1,5 @@
 <template>
-  <div class="message-wrapper">
+  <div class="message-wrapper message-list-box">
     <Header :headObj="headObj" @leftClick="$router.go(-1)"/>
     <div class="main-content">
       <div class="content-wrapper" v-if="listData.length > 0">
@@ -11,7 +11,7 @@
                            :startY="parseInt(startY)"
                            @pulling-down="onPullingDown"
                            @pulling-up="onPullingUp">
-          <ul class="list-wrapper">
+       <!--   <ul class="list-wrapper">
             <li v-for="(item, index) in listData" :key="index">
               <div v-if="!removeIdList.includes(item.id)"
                    :key="index"
@@ -23,8 +23,26 @@
                 </div>
                 <div class="bottom">{{ item.addTime }}</div>
               </div>
+
             </li>
-          </ul>
+          </ul>-->
+          <div class="message-list-wrap">
+              <div class="mod-list-item" v-for="(item, index) in listData" :key="index"
+                   @click.stop="_readMessage(item, index)">
+                <template v-if="!removeIdList.includes(item.id)">
+                  <div class="top">
+                    <h1>
+                      <i v-if="item.readStatus === 0" class="iconfont iconyuandianxiao"></i>
+                      {{ item.messageTitle }}</h1>
+                  </div>
+                  <div class="bottom">
+                    <span>{{ item.addTime }}</span>
+                  </div>
+                </template>
+              </div>
+
+          </div>
+
         </vue-better-scroll>
       </div>
       <NotData v-else :isNotData="isNotData"/>
@@ -255,27 +273,6 @@
 <style lang="scss" scoped>
   .skin-gray{
     .message-wrapper {
-      .main-content {
-        background-image: linear-gradient(to bottom, #494664, #303244);
-        .content-wrapper {
-          ul.list-wrapper {
-            li {
-              .item {
-                border-bottom: 1px solid #717180;
-                .top {
-                  color: #fff;
-                  i {
-                    background: #f74c31;
-                  }
-                }
-                .bottom {
-                  color: #aaa;
-                }
-              }
-            }
-          }
-        }
-      }
       .detail-content {
         .van-nav-bar {
           background: linear-gradient(91deg, #54517b 0%, #747199 100%, #747199 100%);
@@ -319,27 +316,6 @@
   }
   .skin-black{
     .message-wrapper {
-      .main-content {
-        background: #191b1f;
-        .content-wrapper {
-          ul.list-wrapper {
-            li {
-              .item {
-                border-bottom: 1px solid #393940;
-                .top {
-                  color: #fff;
-                  i {
-                    background: #f74c31;
-                  }
-                }
-                .bottom {
-                  color: #8f8f8f;
-                }
-              }
-            }
-          }
-        }
-      }
       .detail-content {
         .van-nav-bar {
           background-image: linear-gradient(151deg, #65317d -12%, #293384 126%);
@@ -382,55 +358,21 @@
       }
     }
   }
-  .message-wrapper {
+  .message-list-box {
     height: 100%;
     display: flex;
     flex-direction: column;
-    .main-content {
+    .main-content{
       flex: 1;
       position: relative;
       height: calc(100% - 1rem);
       overflow: hidden;
-      background-image: linear-gradient(to bottom, #494664, #303244);
       .content-wrapper {
         display: flex;
         height: 100%;
         flex-direction: column;
-        ul.list-wrapper {
-          li {
-            .item {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              border-bottom: 1px solid #717180;
-              font-size: 0.3rem;
-              height: 1.5rem;
-              margin: 0 0.2rem;
-              padding: 0 0 0 .2rem;
-              .top {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                color: #fff;
-                height: .6rem;
-                i {
-                  width: 12px;
-                  height: 12px;
-                  background: #f74c31;
-                  border-radius: 50%;
-                  margin-right: 5px;
-                }
-              }
-              .bottom {
-                color: #aaa;
-                line-height: .6rem;
-              }
-            }
-          }
-        }
       }
     }
-
     .detail-content {
       display: flex;
       flex-direction: column;
@@ -453,24 +395,23 @@
         background-image: linear-gradient(to bottom, #494664, #303244);
         .message-detail {
           color: #fff;
-          padding: 10px;
+          padding: 15px;
           .title {
             line-height: 1.2;
-            margin: 10px 0;
-            font-size: 20px;
-            font-weight: 600;
+            margin: 5px 0 10px;
+            font-size: 18px;
             color: #fff;
           }
           .addTime {
             margin: 10px 0;
             padding: 0 0 10px;
-            font-size: 14px;
+            font-size: 12px;
             color: #999;
             border-bottom: 1px solid #393940;
           }
           .detail {
             line-height: 2;
-            text-indent: 2em;
+            /*text-indent: 2em;*/
           }
           .btn-list {
             display: flex;

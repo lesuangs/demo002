@@ -139,6 +139,7 @@
     </div>
     <div class="dialog">
       <van-popup
+              class="mod-popup-box"
               v-model="timeShow"
               position="bottom"
               :style="{ height: '80%' }"

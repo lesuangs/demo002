@@ -53,6 +53,7 @@
     </div>
     <div class="dialog">
       <van-popup
+              class="mod-popup-box"
               v-model="timeShow"
               position="top"
               :style="{ height: '100%' }"

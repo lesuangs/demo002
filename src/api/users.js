@@ -17,19 +17,17 @@ const users = {
     return axios.get('v/getRegLimit')
   },
   // 验证账号，真实姓名，手机号
-  getCheckUnique (val) {
+  getCheckUnique (type, val) {
     let params = {
-      // type:type,
-      val:val,
-      tenantCode:'model'
-
+      type:type,
+      val:val
     }
-    return axios.get('v/user/checkUnique',{params: params})
+    return axios.post('v/user/checkUnique',qs.stringify(params))
   },
   // 注册
   register (params) {
-  /*  params.password = md5(params.password)
-    params.confirmPassword = md5(params.confirmPassword)*/
+    params.password = md5(params.password)
+    params.confirmPassword = md5(params.confirmPassword)
     return axios.post('v/user/reg', qs.stringify(params))
   },
   // 登录
@@ -51,7 +49,7 @@ const users = {
   },
   // 试玩
   regTest () {
-    return axios.get('v/user/regTest')
+    return axios.get(`/v/user/regTest${tenantCode}`)
   },
   // 修改资金密码
   changeWithdraw (params) {
