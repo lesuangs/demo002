@@ -1,6 +1,6 @@
 <template>
   <!--  <div id="app" class="skin-grey">-->
-  <div id="app" class="sssss">
+  <div id="app" class="fat">
     <!--    <div v-title :data-title="title"></div>-->
     <keep-alive>
       <router-view></router-view>
