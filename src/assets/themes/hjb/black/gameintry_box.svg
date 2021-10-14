@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="347" height="166" viewBox="0 0 347 166">
+    <defs>
+        <radialGradient id="iftiwi0xpc" cx="50%" cy="45.677%" r="65.63%" fx="50%" fy="45.677%" gradientTransform="matrix(0 1 -.92574 0 .923 -.043)">
+            <stop offset="0%" stop-color="#EC1FAC"/>
+            <stop offset="100%" stop-color="#1772D1"/>
+        </radialGradient>
+        <linearGradient id="g0iribhm9b" x1="7.89%" x2="38.064%" y1="38.557%" y2="57.431%">
+            <stop offset="0%" stop-color="#27282F"/>
+            <stop offset="100%" stop-color="#24252D"/>
+        </linearGradient>
+        <filter id="govy1clu7d" width="209.9%" height="218.7%" x="-55%" y="-59.4%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="37"/>
+        </filter>
+        <rect id="2ejk8b92aa" width="347" height="166" x="0" y="0" rx="10"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-14 -1158) translate(14 1141) translate(0 17)">
+                            <mask id="4qnl7tonfe" fill="#fff">
+                                <use xlink:href="#2ejk8b92aa"/>
+                            </mask>
+                            <use fill="url(#g0iribhm9b)" xlink:href="#2ejk8b92aa"/>
+                            <ellipse cx="275" cy="9.5" fill="url(#iftiwi0xpc)" filter="url(#govy1clu7d)" mask="url(#4qnl7tonfe)" opacity=".585" rx="101" ry="93.5"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+           </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

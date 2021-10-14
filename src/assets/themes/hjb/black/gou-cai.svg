@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42" height="48" viewBox="0 0 42 48">
+    <defs>
+        <radialGradient id="fnlhyrc21a" cx="65.367%" cy="74.053%" r="78.368%" fx="65.367%" fy="74.053%" gradientTransform="scale(1 .875) rotate(54.26 .55 .793)">
+            <stop offset="0%" stop-color="#EC1FAC"/>
+            <stop offset="100%" stop-color="#1772D1"/>
+        </radialGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g fill="url(#fnlhyrc21a)" transform="translate(-167 -1523)">
+            <g>
+                <g>
+                    <path d="M23.164 1.393l17 10.938C41.31 13.067 42 14.335 42 15.695v17.418c0 1.404-.736 2.705-1.94 3.428l-17 10.22c-1.267.762-2.853.762-4.12 0l-17-10.22C.735 35.818 0 34.517 0 33.113V15.695c0-1.36.691-2.628 1.836-3.364l17-10.938c1.318-.849 3.01-.849 4.328 0z" transform="translate(0 1517) translate(167 6)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,6 @@
+.theme-bdb-blue {
+  $global-bgcolor: blue;
+  .lottery-header, .toLogin, .header, .van-tabs__wrap, .tian-content .m-button, .van-nav-bar, .dialog-title, .choose, .tab-head, .g-header, .van-tabs__line, .tab-s, .commSd, .isSelectedCode, .calculator, .rebate-t, .checked, .lottery-header, .button-default, .isSelectedCode, .g-footer, .van-button, .van-dialog__header {
+    background: $global-bgcolor !important;
+  }
+}

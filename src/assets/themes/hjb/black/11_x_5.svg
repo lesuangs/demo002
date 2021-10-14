@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="85" height="39" viewBox="0 0 85 39">
+    <defs>
+        <linearGradient id="bc2reewxwb" x1="7.89%" x2="38.064%" y1="38.557%" y2="57.431%">
+            <stop offset="0%" stop-color="#27282F"/>
+            <stop offset="100%" stop-color="#24252D"/>
+        </linearGradient>
+        <linearGradient id="26e1a9c0uc" x1="50%" x2="50%" y1="-5.033%" y2="78.068%">
+            <stop offset="0%" stop-color="#24252D" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#23242D"/>
+        </linearGradient>
+        <linearGradient id="3qclqknzwg" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#E3CABC"/>
+            <stop offset="100%" stop-color="#DEAF90"/>
+        </linearGradient>
+        <radialGradient id="9an7kzrg6d" cx="50%" cy="0%" r="85.235%" fx="50%" fy="0%" gradientTransform="matrix(0 1 -.44706 0 .5 -.5)">
+            <stop offset="0%" stop-color="#424852"/>
+            <stop offset="100%" stop-color="#292A35"/>
+        </radialGradient>
+        <filter id="2r1186ik9e" width="154.3%" height="273.3%" x="-27.2%" y="-56.7%" filterUnits="objectBoundingBox">
+            <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.0856717042 0 0 0 0 0.0908243452 0 0 0 0 0.147503397 0 0 0 0.543405813 0"/>
+        </filter>
+        <text id="t4n9ykrkgf" font-family="MFJianHei_Noncommercial-Regular, MF JianHei (Noncommercial)" font-size="15" font-weight="normal">
+            <tspan x="20" y="25">1 1 选 5</tspan>
+        </text>
+        <rect id="vgfmcc1d3a" width="347" height="166" x="0" y="0" rx="10"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <path fill="#191B1F" d="M0 0H375V1600H0z" transform="translate(-126 -1272)"/>
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-126 -1272) translate(14 1141) translate(0 17)">
+                            <use fill="url(#bc2reewxwb)" xlink:href="#vgfmcc1d3a"/>
+                        </g>
+                    </g>
+                </g>
+                <g fill="url(#26e1a9c0uc)" transform="translate(-126 -1272) translate(14 1141) translate(115)">
+                    <path d="M0 107h232v65c0 5.523-4.477 10-10 10H0v-75z"/>
+                </g>
+                <g>
+                    <g transform="translate(-126 -1272) translate(14 1141) translate(17 85) translate(95 46)">
+                        <rect width="85" height="38" fill="url(#9an7kzrg6d)" rx="10"/>
+                        <g>
+                            <use fill="#FFF" filter="url(#2r1186ik9e)" xlink:href="#t4n9ykrkgf"/>
+                            <use fill="url(#3qclqknzwg)" xlink:href="#t4n9ykrkgf"/>
+                            <use fill="#FFF" xlink:href="#t4n9ykrkgf"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,35 @@
+.skin-gray{
+  .van-dialog{
+    background: $skin-gray-con-bg;
+    width: 6.4rem ;
+    border-radius: .4rem ;
+    color: #fff;
+    .van-dialog__header{
+      color: #fff;
+      border-bottom: 1px solid $skin-black-border-color;
+      padding: 0.25rem 0;
+    }
+    .van-dialog__content{
+      min-height: 1.5rem;
+      .van-dialog__message{
+        color: #fff;
+        font-size: 16px;
+      }
+    }
+    .van-dialog__footer--buttons {
+      .van-dialog__cancel.van-button--default {
+        background-image: linear-gradient(to bottom, #8c90bc 2%, #545a96);
+        color: #fff ;
+      }
+      .van-dialog__confirm.van-button--default {
+        color: #533510;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d);
+      }
+      span {
+        font-size: .32rem ;
+        font-weight: 600 ;
+      }
+    }
+  }
+}
+

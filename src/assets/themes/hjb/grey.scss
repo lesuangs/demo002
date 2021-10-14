@@ -1,0 +1,1435 @@
+//#app, body, html{
+//  background: none !important;
+//}
+.theme-hjb-grey {
+  background-image: linear-gradient(to bottom, #494664, #303244) !important;
+  .lotter {
+    .game-bottom {
+      bottom: 0.1rem !important;
+      button {
+        width: 3rem !important;
+        height: 0.9rem !important;
+        line-height: 0.9rem !important;
+        border: none !important;
+        margin-right: 0.4rem !important;
+        color: #30303d !important;
+        border-radius: 1.2rem !important;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+
+      }
+      .bet {
+        background: none !important;
+        span {
+          width: 3rem !important;
+          line-height: 0.9rem !important;
+          height: 0.9rem !important;
+          border: none !important;
+          margin-left: 0.4rem !important;
+          color: #ffffff !important;
+          border-radius: 1.2rem !important;
+          background-image: linear-gradient(to bottom, #8c90bc 2%, #545a96) !important;
+        }
+      }
+    }
+  }
+
+  .g-footer {
+    width: 6rem !important;
+    height: 0.8rem !important;
+    line-height: 0.8rem !important;
+    border-radius: 1.2rem !important;
+    color: #533510 !important;
+    margin: 0 auto;
+    background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+
+  }
+  //提现记录
+  .lotter {
+    background: #494664 !important;
+    .betDetails {
+      .content .bets {
+        background: #4c4a64 !important;
+        .option {
+          background: none !important;
+        }
+        .codes span {
+          i {
+            color: white !important;
+          }
+          em {
+
+            border: solid 0.02rem #605c7b !important;
+            background-color: #38364a !important;
+            box-shadow: none !important;
+            color: white !important;
+          }
+        }
+
+      }
+      .random {
+        span {
+          color: #9fa7b3 !important;
+          .iconinfo:before {
+            color: #9fa7b3 !important;
+          }
+        }
+      }
+    }
+    .header-content .lottery-header {
+      background: #494664 !important;
+    }
+    .main-info {
+      background: #494664 !important;
+      color: white !important;
+      box-shadow: none !important;
+      .cd {
+        border-left: 0.02rem solid #717180 !important;
+        .van-count-down {
+          color: white !important;
+        }
+      }
+      .recently .fs-26:before {
+        border-top-color: white !important;
+      }
+    }
+  }
+  .draw-history {
+    .g-header {
+      background-color: #4c4965 !important;
+    }
+  }
+  .scrollStyle .ty-content .game-tab div {
+    color: #9292a5 !important;
+  }
+  .scrollStyle .ty-content .m-no-data .text {
+    color: white !important;
+  }
+  .scrollStyle .ty-content .game-tab .active {
+    color: white !important;
+  }
+  //代理中心
+  .agent .g-content {
+    .g-box {
+      background: #4c4a64 !important;
+      color: white !important;
+      border-bottom: 0.05rem solid #717180 !important;
+    }
+    .teamDateFex {
+      background: #4c4a64 !important;
+      span {
+        color: white !important;
+      }
+    }
+    .agent-center {
+      .van-cell {
+        background-color: #4c4a64 !important;
+        .van-cell__title {
+          color: white !important;
+        }
+      }
+      .gridList {
+        border-bottom: 0.02rem solid #717180 !important;
+      }
+    }
+  }
+  .b-list {
+    background-image: linear-gradient(to bottom, #494664, #303244) !important;
+    color: white !important;
+    .title {
+      background-color: #25242f !important;
+      color: white !important;
+      border-bottom: solid 0.02rem #717180 !important;
+    }
+    .content {
+      background: none !important;
+      border-bottom: solid 0.02rem #717180 !important;
+    }
+  }
+  .g-content {
+    background: #4c4a64 !important;
+
+    .list-paddingleft-2 {
+      background: #4c4a64 !important;
+      color: white !important;
+      strong {
+        color: #9a9aa7 !important;
+      }
+      span {
+        color: white !important;
+      }
+    }
+  }
+  //类型支付
+  .recharge {
+    background-image: linear-gradient(to bottom, #494664, #303244);
+    .user-info {
+      background: #4c4a64 !important;
+      .balance {
+        color: #9a9aa7 !important;
+        .iconfont {
+          color: white !important;
+        }
+        .tips {
+          background-color: #4c4a64 !important;
+          color: #c1c1cf !important;
+          border-bottom: solid 0.02rem #717180;
+          .line {
+            color: #c1c1cf;
+          }
+        }
+      }
+      .name {
+        color: white !important;
+      }
+      .account {
+        color: white !important;
+      }
+    }
+    .tips .van-notice-bar {
+      background-color: #4c4a64 !important;
+      color: #c1c1cf !important;
+      border-bottom: solid 0.02rem #717180;
+      .line {
+        color: #c1c1cf;
+      }
+    }
+    .g-box .cell_label {
+      color: white !important;
+    }
+    .van-cell__label .cell_label {
+      color: #c1c1cf !important;
+    }
+    .g-box .van-cell {
+      background-color: #4c4a64 !important;
+      .van-cell__title {
+        color: white !important;
+      }
+    }
+    .van-cell:not(:last-child)::after {
+      border-bottom: 0.02rem solid #717180 !important;
+    }
+  }
+  //充值
+  .amount {
+    background-image: linear-gradient(to bottom, #494664, #303244);
+    .moneycontent {
+      background-color: #4c4a64 !important;
+      div {
+        color: #533510;
+        background-color: #4c4a64 !important;
+        border-radius: 1rem !important;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+      }
+    }
+    .van-steps--vertical {
+      background-color: #4c4a64 !important;
+    }
+    .amount1 {
+      background-color: #4c4a64 !important;
+      .moneycontent div {
+        color: #533510 !important;
+        background-color: #4c4a64 !important;
+        border-radius: 1rem !important;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+      }
+      .g-content {
+        background-color: #4c4a64 !important;
+        .g-contentes {
+          background-color: #4c4a64 !important;
+          div {
+            background-color: #4c4a64 !important;
+          }
+        }
+        .van-icon-passed::before {
+          color: #c1c1cf !important;
+        }
+      }
+      span {
+        color: white !important;
+      }
+      .tips {
+        background-color: #4c4a64 !important;
+        color: #c1c1cf !important;
+        border-bottom: solid 0.02rem #717180;
+        .line {
+          color: #c1c1cf;
+        }
+      }
+      .input {
+        color: #c1c1cf !important;
+        font-size: .15rem !important;
+        border-bottom: 0.01rem solid #717180;
+        background-color: #4c4a64 !important;
+      }
+      .ftbutton {
+        width: 5.9rem;
+        height: 0.8rem;
+        border-radius: 1rem;
+        color: #533510;
+        left: 0.85rem;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d);
+
+      }
+    }
+  }
+  //充值确认
+  .other {
+    background-image: linear-gradient(to bottom, #494664, #303244) !important;
+    .footer button {
+      width: 5.9rem !important;
+      height: 0.8rem !important;
+      border-radius: 1rem !important;
+      color: #533510 !important;
+      left: 0.85rem !important;
+      background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+
+    }
+    .payMoney {
+      background-color: #4c4a64 !important;
+      border-bottom: solid 0.02rem #717180 !important;
+      strong {
+        color: #c1c1cf !important;
+      }
+      input {
+        height: 0.9rem !important;
+        background: #4c4a64 !important;
+        color: #ffffff !important;
+      }
+    }
+    .moneycontent {
+      background-color: #4c4a64 !important;
+      div {
+        color: #533510;
+        background-color: #4c4a64 !important;
+        border-radius: 1rem !important;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+      }
+    }
+    .moneyRange {
+      color: #c1c1cf !important;
+    }
+    span {
+      color: white !important;
+    }
+    .payType {
+      background-color: #4c4a64 !important;
+      color: #c1c1cf !important;
+      border-bottom: solid 0.02rem #717180;
+      .line {
+        color: #c1c1cf;
+      }
+      input {
+        height: 0.9rem !important;
+        background: #4c4a64 !important;
+        color: #ffffff !important;
+      }
+      .fuzhi {
+        width: 1.1rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        border-radius: 1rem !important;
+        border: none !important;
+        color: #533510 !important;
+        margin-left: 0.2rem;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d);
+      }
+    }
+    .tips {
+      color: #c1c1cf !important;
+      border-bottom: none !important;
+      .line {
+        color: #c1c1cf !important;
+      }
+    }
+    .input {
+      color: #c1c1cf !important;
+      font-size: .15rem !important;
+      border-bottom: 0.01rem solid #717180;
+      background-color: #4c4a64 !important;
+    }
+    .others {
+      background: #4c4a64 !important;
+      color: #c1c1cf !important;
+    }
+    .ocontent {
+      background: #4c4a64 !important;
+      .flex {
+        color: #c1c1cf !important;
+      }
+      input {
+        background: #4c4a64 !important;
+        color: #ffffff !important;
+      }
+      input::-webkit-input-placeholder {
+        background: #4c4a64 !important;
+      }
+      .fuzhi {
+        width: 1.1rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        border-radius: 1rem !important;
+        border: none !important;
+        color: #533510 !important;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d);
+      }
+    }
+    .ocontent div {
+      background: #4c4a64 !important;
+      border-bottom: 0.02rem solid #717180 !important;
+      color: white;
+
+    }
+    .footer {
+      background: none !important;
+      border-top: none !important;
+      button {
+        margin-right: 0.2rem !important;
+      }
+      button:nth-child(1) {
+        width: 3rem;
+        height: 0.9rem;
+        border-radius: 1rem;
+        background-image: linear-gradient(to bottom, #8c90bc 2%, #545a96)
+      }
+      button:nth-child(2) {
+        width: 3rem;
+        height: 0.9rem;
+        border-radius: 1rem;
+        color: #533510;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d);
+      }
+    }
+  }
+  //我的银行卡
+  .g-content {
+    background-image: linear-gradient(to bottom, #494664, #303244);
+    .title {
+      color: white !important;
+      border-bottom: 0.02rem solid #717180;
+    }
+    .withDrawable {
+      color: white !important;
+      border-bottom: 0.02rem solid #717180;
+    }
+
+    .van-notice-bar {
+      background-color: #4c4a64 !important;
+      color: #c1c1cf !important;
+    }
+    .bankName {
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.11);
+      background-color: #4c4a64 !important;
+      .bankNameRight {
+        span {
+          color: #ffffff;
+        }
+        p {
+          color: #8f8f8f;
+        }
+      }
+    }
+    .tips {
+      background-color: #4c4a64 !important;
+      color: #c1c1cf !important;
+      border-bottom: solid 0.02rem #717180;
+      .line {
+        color: #c1c1cf;
+      }
+    }
+    .user-info {
+      background: #4c4a64 !important;
+      .balance {
+        color: #9a9aa7 !important;
+        .iconfont {
+          color: white !important;
+        }
+      }
+      .name {
+        color: white !important;
+      }
+      .account {
+        color: white !important;
+      }
+    }
+    .withdrawalAmount {
+      background: #4c4a64 !important;
+      p {
+        color: #9a9aa7;
+      }
+      .cate {
+        color: #9a9aa7;
+      }
+      .van-field__control {
+        color: #ffffff;
+      }
+      .vCode {
+        background-image: linear-gradient(to bottom, #494664, #303244);
+        .van-cell {
+          background: #4c4a64 !important;
+        }
+      }
+      .van-cell {
+        background: none;
+        color: white !important;
+      }
+      .van-password-input__security li {
+        border: 0.02rem solid #717180;;
+        background-color: #4c4a64 !important;
+
+      }
+    }
+    .vCode {
+      background: none;
+      .van-cell {
+        background: #4c4a64 !important;
+      }
+    }
+    .m-btn {
+      width: 5.8rem !important;
+      height: 0.84rem !important;
+      border-radius: 1rem !important;
+      color: #533510 !important;
+      background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+    }
+    .van-cell-group__title {
+      background-color: #4c4a64 !important;
+    }
+    .van-cell-group {
+      background-color: #4c4a64 !important;
+      box-shadow: 0 0.02rem 0.05rem 0 rgba(0, 0, 0, 0.11);
+      .van-cell {
+        background-color: #4c4a64 !important;
+        color: white !important;
+      }
+      .van-field__label span {
+        color: #9a9aa7;
+      }
+      .van-field__control {
+        color: #ffffff;
+      }
+      .van-cell:not(:last-child)::after {
+        border-bottom: 0.02rem solid #717180 !important;
+      }
+    }
+   /* .van-number-keyboard__body {
+      background-color: rgba(21, 21, 21, 0.85) !important;
+      .van-key {
+        color: white;
+        background-color: rgba(21, 21, 21, 0.85) !important;
+      }
+    }*/
+  }
+  .draw-history {
+    .g-header .middle .header-box {
+      background: none !important;
+      .time {
+        .coming, .van-count-down {
+          color: white !important;
+        }
+
+      }
+
+      .text {
+        .theme-color, .issue {
+          color: white !important;
+        }
+      }
+    }
+  }
+
+  .g-content {
+    .title {
+      margin-bottom: 0.04rem !important;
+      border-bottom: 0.15rem solid #494664 !important;
+    }
+    .ball-style .lhc-style {
+      color: white !important;
+    }
+  }
+  .tian-content {
+    background-image: linear-gradient(to bottom, #494664, #303244) !important;
+    .cp-content .digital-item {
+      margin-bottom: 0.04rem !important;
+      border-bottom: none !important;
+      background: #4c4a64 !important;
+      .sum em {
+        color: white !important;
+      }
+    }
+
+    color: white !important;
+    .ty-content .game-tab div.active {
+      border-bottom: 0.08rem solid #efcea6 !important;
+    }
+    .del-body {
+      background-image: linear-gradient(to bottom, #494664, #303244) !important;
+      .btn .van-button {
+        width: 6rem !important;
+        height: 0.8rem !important;
+        line-height: 0.8rem !important;
+        border-radius: 1rem !important;
+        color: #533510 !important;
+        left: 0.85rem !important;
+        background-image: -webkit-linear-gradient(top, #ffedc6, #ffd57d) !important;
+        background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+        border: none !important;
+        border-color: none !important;
+        margin-bottom: 1.2rem !important;
+      }
+      .ccontent {
+        margin-bottom: 0.6rem;
+        .del-bottom {
+          background: #4c4a64 !important;
+          color: #9a9aa7 !important;
+          width: 87.5% !important;
+          margin: 0 auto;
+          border-radius: 0.3rem !important;
+          .color, .num-b {
+            color: white !important;
+          }
+
+        }
+      }
+
+    }
+    .tian-section {
+      .lottery-list {
+        border-top: none !important;
+        border-right: none !important;
+        .lottery-item:after {
+          border-bottom: none !important;
+        }
+        .lottery-item .item-rg:after {
+          border-right: none !important;
+        }
+      }
+    }
+    .obSection {
+      background: none !important;
+      .conOrg .orgTitle {
+        color: white !important;
+      }
+    }
+    .conOrg {
+      .noticeOrg .tian-notice {
+        border-bottom: none !important;
+      }
+      div {
+        background: #4c4a64 !important;
+      }
+      .van-notice-bar__play {
+        color: white !important;
+      }
+      .van-icon-arrow::before {
+        color: #9292a5 !important;
+      }
+    }
+    .ty-content {
+      .game-tab {
+        div {
+          color: #9292a5 !important;
+        }
+        .active {
+          color: white !important;
+        }
+      }
+      .a-list {
+        .a-item {
+          border-bottom: 0.01rem solid #717180 !important;
+          .top {
+            span {
+              color: white !important;
+            }
+          }
+          .bottom {
+            span {
+              color: #9292a5 !important;
+            }
+          }
+        }
+      }
+    }
+    //首页样式
+    .item-rg h5 {
+      color: #9a9aa7 !important;
+    }
+    .lottery-item-del {
+      color: white !important;
+    }
+    .van-ellipsis {
+      color: white !important;
+    }
+    .g-header {
+      .right .messages-box {
+        background: none !important;
+        margin-top: -0.5rem !important;
+        right: 1.55rem !important;
+        height: 0.65rem !important;
+        line-height: 0.65rem !important;
+        width: 1.5rem !important;
+        border-radius: 1.2rem !important;
+      }
+      .left .user-info-box {
+        color: #533510;
+        right: -7rem !important;
+        width: 1.5rem !important;
+        height: 0.65rem !important;
+        border-radius: 1.2rem !important;
+        margin-top: -0.32rem !important;
+      }
+      height: 1.42rem;
+      margin: 0 0 0.36rem;
+      padding: 0.08rem 0.14rem 0.62rem;
+      background-image: linear-gradient(91deg, #54517b 0%, #747199 100%, #747199 100%) !important;
+
+      .left .user-info-box, .right .messages-box {
+        width: 0.88rem;
+        height: 0.32rem;
+        font-size: 0.16rem;
+        font-weight: 500;
+        border-radius: 0.18rem;
+        position: absolute;
+      }
+      .left .user-info-box {
+        color: #533510;
+        background-image: linear-gradient(to bottom, #efcea6, #dab591);
+        right: -7rem;
+      }
+
+      .right .messages-box {
+        border: solid 1px #ffd57d;
+        background-color: #322b4d;
+        color: #ffd57d;
+        right: 1rem;
+        margin-top: -0.16rem;
+        margin-right: 0.3rem;
+      }
+    }
+
+    .tian-notice {
+      width: 100%;
+      position: fixed;
+      top: 1rem;
+      z-index: 999;
+
+      .van-notice-bar {
+        height: 0.18rem;
+        background: transparent;
+        font-size: 0.13rem;
+        color: #ffffff;
+      }
+    }
+
+    .tian-tab {
+      width: 90%;
+      font-size: 0.12rem;
+      border-radius: 1.33rem;
+      -webkit-backdrop-filter: blur(0.18rem);
+      backdrop-filter: blur(0.18rem);
+      background-color: #4c4a64;
+      margin: auto;
+      position: relative;
+      top: -3.36rem;
+
+      .tian-tab-item {
+        color: #9a9aa7 !important;
+        padding: 0.2rem 0 0.2rem !important;
+        border: 0 !important;
+      }
+
+    }
+
+    .tian-swiper {
+      position: relative;
+      width: 100%;
+      top: 1rem;
+      z-index: 999;
+      margin-top: 1rem;
+    }
+
+    .van-tabs__nav {
+      background: #4c4a64 !important;
+    }
+
+    .footer {
+      background: #222433 !important;
+      .footer-item .active {
+        color: #ffd57d !important;
+      }
+    }
+
+    //彩票大厅样式
+    .tab-head {
+      background-image: linear-gradient(91deg, #54517b 0%, #747199 100%, #747199 100%) !important;
+    }
+
+    .cp-content .cp-list .cp-item .bottom {
+      border-bottom: 0.1rem solid #f5f5f5 !important;
+      .iconfont {
+        color: white !important;
+      }
+    }
+
+    .cp-content .cp-list .cp-item .top .top-r .title {
+      color: white !important;
+    }
+
+    .cp-content .cp-list .cp-item .top .top-r .top-r-i .haoma span {
+      color: white !important;
+    }
+
+    .cp-content, .cp-list {
+      background-image: linear-gradient(to bottom, #494664, #303244) !important;
+      .van-sidebar-item {
+        background-image: linear-gradient(to bottom, #494664, #303244) !important;
+        color: white !important;
+        .cp-item .top .top-r .top-r-i .title {
+          color: white !important;
+        }
+      }
+      .van-sidebar-item--select {
+        border-color: white !important;
+      }
+    }
+
+    //电子大厅
+    .van-tab--active {
+      color: white !important;
+    }
+
+    .van-tabs__line {
+      background: white !important;
+    }
+
+    .qp-content .van-tabs .van-tabs__content {
+      background: gray !important;
+
+    }
+  }
+
+  .footer {
+    background: #222433 !important;
+    border-top: 0.02rem solid #222433 !important;
+    .footer-item {
+      color: #9a9aa7 !important;
+      .active {
+        color: #ffd57d !important;
+      }
+    }
+  }
+  //登录注册
+  .mine {
+    .cus_serve {
+      img {
+        position: absolute;
+        top: 0rem;
+        left: 0.8rem;
+      }
+      .van-dialog .g-content .item .box, .qq p {
+        .alttext {
+          color: white !important;
+        }
+        color: #9a9aa7 !important;
+      }
+      .van-dialog .van-dialog__header {
+        font-size: .32rem !important;
+        font-weight: 500 !important;
+        color: #533510 !important;
+        background: transparent !important;
+      }
+      .van-dialog .van-dialog__content .g-content .item {
+        width: 5.66rem !important;
+        height: 1.4rem !important;
+        margin: 0 0 .32rem !important;
+        border-radius: .2rem !important;
+        box-shadow: 0 0 0.16rem 0 rgba(0, 0, 0, 0.06) !important;
+        background-image: radial-gradient(circle at 50% 0, #424852, #292a35 38%) !important;
+      }
+      .van-dialog {
+        width: 6.3rem !important;
+        border-radius: .4rem !important;
+        -webkit-backdrop-filter: blur(0.36rem) !important;
+        backdrop-filter: blur(0.36rem) !important;
+        background-image: linear-gradient(to bottom, #413f56 1%, #2b293e) !important;
+      }
+    }
+    .content {
+
+      .g-content .grid {
+        margin-top: .7rem !important;
+      }
+      .header, .grid {
+        background: #4c4a64 !important;
+        // .user-nologin .u-btn .m-button{
+        //   height: 0.65rem !important;
+        //   line-height: 0.65rem !important;
+        //   border-radius: 1.2rem !important;
+        //   padding-left: 0.4rem !important;
+        //   padding-right: 0.4rem !important;
+        //   background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+        //   color: #533510 !important;
+        // }
+      }
+      .g-content {
+        flex: 1;
+        overflow: scroll;
+        padding: 0 !important;
+        .user-other {
+          background: #4c4a64 !important;
+          color: white !important;
+        }
+        .user-capital {
+          width: 6.56rem !important;
+          height: 1.32rem !important;
+          border-radius: .66rem !important;
+          -webkit-backdrop-filter: blur(0.36rem) !important;
+          backdrop-filter: blur(0.36rem) !important;
+          background-image: linear-gradient(to bottom, #413f56 1%, #2b293e) !important;
+          font-size: .28rem !important;
+          color: white !important;
+          position: fixed !important;
+          left: -50% !important;
+          right: -50% !important;
+          top: 2.2rem !important;
+          margin: auto !important;
+          .recharge {
+            background: none !important;
+          }
+          .withdraw {
+            border-right: 0.02rem solid #4e4e5a !important;
+
+          }
+        }
+        .grid-item {
+          border: none !important;
+          color: #9292a5;
+        }
+      }
+    }
+  }
+
+  [class*=van-hairline]::after {
+    border: 0 solid #717180 !important;
+  }
+  .mine .content .header {
+    height: 2.84rem !important;
+    .user-nologin .u-btn .u-btntwo {
+      width: auto !important;
+      border: solid .02rem #ffd57d !important;
+      background: none !important;
+      color: #ffd57d !important;
+    }
+    .van-icon {
+      left: 6.68rem !important;
+      top: .48rem !important;
+    }
+    .user-nologin .u-btn {
+      width: 63%;
+      margin: 0 auto;
+    }
+
+    .user-nologin .u-btn .m-button {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+      line-height: .64rem !important;
+      text-align: center;
+      border-radius: .36rem !important;
+      display: -webkit-box !important;
+      display: -webkit-flex !important;
+      display: flex !important;
+      background-image: linear-gradient(to bottom, #efcea6, #dab591) !important;
+      color: #533510 !important;
+    }
+    .user-nologin .u-btn {
+      display: flex !important;
+    }
+    background-image: linear-gradient(92deg, #54517b 0%, #747199 99%, #747199 99%) !important;
+    .user-login {
+      .user-balance {
+        background-image: linear-gradient(92deg, #54517b 0%, #747199 99%, #747199 99%) !important;
+        box-shadow: none !important;
+        .balance {
+          color: white !important;
+        }
+        .refresh {
+          color: white !important;
+        }
+        .b-money {
+          color: white !important;
+        }
+      }
+    }
+  }
+  .mine .content .g-content div.van-cell::after {
+    border-bottom: 0.02rem solid #717180 !important;
+  }
+  .login, .register {
+    background-image: linear-gradient(to bottom, #494664, #303244) !important;
+    .header .iconicon-closes:before {
+      color: white !important;
+    }
+    .content {
+      .title {
+        color: #9292a5 !important;
+      }
+
+    }
+
+    .form .van-form {
+      .van-cell {
+        background: #4c4a64 !important;
+        span {
+          color: #9a9aa7 !important;
+        }
+        input {
+          color: white !important;
+        }
+      }
+      .van-cell::after {
+        border-bottom: 0.02rem solid #717180 !important;
+      }
+      button {
+        height: 0.9rem;
+        border-radius: 1rem;
+        color: white !important;
+        box-shadow: none !important;
+        background: #4c4a64 !important;
+        border: none !important;
+      }
+    }
+    .header {
+      background-image: linear-gradient(91deg, #54517b 0%, #747199 100%, #747199 100%) !important;
+      .iconicon-closes:before {
+        content: "\e630";
+        font-size: 0.1rem;
+      }
+    }
+    .content .form .van-form .van-cell {
+      background: #4c4a64 !important;
+      input {
+        color: white !important;
+      }
+    }
+    .content .form .van-form .van-cell::after {
+      border-bottom: 0.02rem solid #717180 !important;
+    }
+    .other {
+      background: none !important;
+    }
+  }
+  .register {
+    background-image: linear-gradient(to bottom, #494664, #303244) !important;
+    color: white !important;
+    .header {
+      background-image: linear-gradient(151deg, #65317d -12%, #293384 126%) !important;
+      i {
+        color: white !important;
+      }
+    }
+
+    .vCode img {
+      background: white !important;
+    }
+
+    .content {
+      .title {
+        color: white !important;
+      }
+
+      .form {
+        button {
+          background: linear-gradient(151deg, #65317d -12%, #293384 126%) !important;
+          border: none !important;
+        }
+      }
+    }
+
+    .other_log {
+      color: white !important;
+    }
+  }
+  .my_coupon {
+    .coupon_tab {
+      .van-tab {
+        color: white !important;
+      }
+      .text {
+        color: #9a9aa7 !important;
+      }
+      .van-tabs__nav {
+        background: #4c4a64 !important;
+        color: white !important;
+      }
+      .van-tabs__line {
+        background: none !important;
+      }
+      .van-tab--active {
+        height: 0.7rem;
+        line-height: 0.7rem;
+        color: #ffedc6 !important;
+        border-radius: 1rem;
+        margin-top: 0.18rem;
+        border: 0.02rem solid #ffedc6 !important;
+      }
+
+    }
+  }
+  //优惠活动
+  .deposit_Details {
+    .dialog .inner {
+      background-color: #24252d !important;
+      padding: 0px !important;
+      .van-popup {
+        background: #000000 !important;
+      }
+      .time {
+        .item-content {
+          margin-top: 0.4rem !important;
+          .van-button--small {
+            background: #16171b !important;
+            width: 2rem !important;
+            height: 1rem !important;
+            border-radius: 0.2rem !important;
+            color: #8f8f8f !important;
+            line-height: 1rem !important;
+            border: none !important;
+          }
+        }
+        .timer-picker-trigger {
+          border-radius: 1.2rem !important;
+          border: none !important;
+          background: #9393a6 !important;
+          width: 3rem !important;
+          height: 1rem !important;
+          line-height: 1rem !important;
+        }
+        .title {
+          height: 0.9rem !important;
+          line-height: 0.9rem !important;
+          color: white !important;
+          border-bottom: 0.01rem solid #717180;
+        }
+      }
+    }
+  }
+
+  .body {
+    color: white !important;
+    background: none !important;
+    .content {
+      > div {
+        border-bottom: 0.01rem solid #717180 !important;
+      }
+    }
+    .topbox {
+      .displayrs span, .displayrx {
+        color: white !important;
+      }
+    }
+    .tabs {
+      .van-tabs--line {
+        background-color: #4c4a64 !important;
+        color: white !important;
+      }
+    }
+    .tips {
+      background-color: #4c4a64 !important;
+      color: #c1c1cf !important;
+      border-bottom: solid 0.02rem #717180;
+      .line {
+        color: #c1c1cf !important;
+      }
+    }
+    .g-content .cell_label {
+      color: white !important;
+    }
+    .van-cell__label .cell_label {
+      color: #c1c1cf !important;
+    }
+    .g-content .van-cell {
+      background-color: #4c4a64 !important;
+      .van-cell__title {
+        color: white !important;
+      }
+    }
+    .van-cell:not(:last-child)::after {
+      border-bottom: 0.02rem solid #717180 !important;
+    }
+    .y-list {
+      background: #191b1f !important;
+
+      span {
+        color: #efcea6 !important;
+      }
+
+      .y-item {
+        margin: 0.46rem 0 0.10rem !important;
+        padding: 0 0.15rem 0.11rem !important;
+        background-color: #4c4a64 !important;
+        border: none !important;
+      }
+    }
+  }
+
+  .del-body {
+    color: white !important;
+
+    .del-content {
+      background: #191b1f !important;
+
+      .y_con {
+        color: #ffffff !important;
+        font-size: 0.14rem !important;
+
+        p span {
+          color: white !important;
+        }
+
+        p strong {
+          color: white !important;
+          background: transparent !important;
+        }
+      }
+
+      .date {
+        color: #efcea6 !important;
+      }
+    }
+  }
+
+  //设置
+  .setting-container {
+    background: #191b1f !important;
+
+    .setting-title {
+      background-color: #4c4a64 !important;
+      color: #8f8f8f !important;
+    }
+
+    .van-cell-group {
+      background-color: #4c4a64 !important;
+      .van-cell__value {
+        border-bottom: 0.02rem solid #717180 !important;
+      }
+      .van-cell:not(:last-child)::after {
+        border-bottom: 0.02rem solid #717180;
+      }
+
+      .van-cell__value--alone {
+        background-color: #4c4a64 !important;
+
+        .user-other {
+          background-color: #4c4a64 !important;
+          color: white !important;
+        }
+      }
+    }
+
+    .btnDiv {
+      .van-button {
+        background: transparent !important;
+        color: white !important;
+        font-size: 0.14rem !important;
+        letter-spacing: 0.7px !important;
+        text-align: right !important;
+        position: relative;
+        top: -4.88rem !important;
+        z-index: 999 !important;
+      }
+    }
+
+  }
+  .introduce {
+    .g-content pre {
+      color: white !important;
+      padding: 0.4rem;
+    }
+    background-image: linear-gradient(to bottom, #494664, #303244) !important;
+  }
+  .introduce .g-content {
+    margin-top: 0.92rem !important;
+    .inputStyle {
+      color: #9a9aa7;
+    }
+    .van-password-input li {
+      border: 0.02rem solid #717180;
+      background-color: #4c4a64 !important;
+    }
+  }
+  .van-nav-bar {
+    background-image: linear-gradient(91deg, #54517b 0%, #747199 100%, #747199 100%) !important;
+  }
+  //关于我们
+  .about .g-content {
+    .banner {
+      //width: 100% !important;
+      height: 4.02rem !important;
+      background-image: linear-gradient(to bottom, #443281, #24252d) !important;
+
+      h1 {
+        color: white !important;
+        margin: 0 0 .2rem !important;
+      }
+
+      .version {
+        width: 0.99rem !important;
+        height: 0.28rem !important;
+        padding: 0.03rem 0.27rem !important;
+        border-radius: 0.16rem !important;
+        box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5) !important;
+        border: solid 1px #34363b !important;
+        background-color: #202225 !important;
+      }
+    }
+
+    .content {
+      background-color: #191b1f !important;
+    }
+  }
+
+  //帮助与反馈
+  .introduce .g-content {
+    background-image: linear-gradient(to bottom, #494664, #303244) !important;
+    padding: 0 !important;
+    .m-btn {
+      border-radius: 1rem !important;
+      color: #533510 !important;
+      background-image: -webkit-linear-gradient(top, #ffedc6, #ffd57d) !important;
+      background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+    }
+    #btns {
+      background: none !important;
+      width: auto !important;
+    }
+    .m-button {
+      border: solid 0.02rem #363648 !important;
+      background-color: #30303d !important;
+    }
+    .van-cell-group__title {
+      background-color: #4c4a64 !important;
+    }
+
+    .van-cell-group {
+      background-color: #4c4a64 !important;
+
+      .van-cell {
+        background-color: #4c4a64 !important;
+        color: white !important;
+      }
+    }
+
+  }
+
+  .introduce .g-content > div {
+    margin: 0.1rem 0 !important;
+  }
+
+  .play_rule .content {
+    background-color: #191b1f !important;
+    color: white !important;
+
+    .tab-header {
+      background-color: #4c4a64 !important;
+
+      span.active {
+        color: white !important;
+        border-bottom: 0.02rem solid white !important;
+      }
+    }
+
+    .tab-header::after {
+      display: none !important;
+    }
+  }
+
+  .header {
+    .m-popup .content-top .m-select-list {
+      background-color: #4c4a64 !important;
+      color: #8f8f8f !important;
+
+      .item {
+        border-radius: 6px !important;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3) !important;
+        background-color: #16171b !important;
+        color: #8f8f8f !important;
+        border: none !important;
+      }
+
+      .active {
+        border-radius: 6px !important;
+        background-image: linear-gradient(to bottom, #efcea6, #dab591) !important;
+      }
+    }
+
+    .m-header-selector, .m-header-selector::after {
+      border: 0rem !important;
+    }
+  }
+
+  //.detail_setting .title {
+  //  background-color: #4c4a64 !important;
+  //  color: #9a9aa7 !important;
+  //  top: 0 !important;
+  //}
+
+  .detail_setting .content {
+    background-color: #191b1f !important;
+    color: white !important;
+  }
+
+  //版本
+  .van-toast--text {
+    width: 1.20rem !important;
+    height: 0.44rem !important;
+    margin: 1.11rem auto 0rem !important;
+    padding: 0.11rem 0.37rem 0.11rem 0.38rem !important;
+    border-radius: 0.06rem !important;
+    background-color: #0d0e10 !important;
+  }
+
+  //缓存
+  .van-dialog {
+    box-shadow: 0 0 0.12rem 0 rgba(0, 0, 0, 0.31) !important;
+    background-image: linear-gradient(to bottom, #413f56 1%, #2b293e) !important;
+    .van-dialog__header {
+      background-color: #4c4a64 !important;
+    }
+    .word {
+      width: 1.3rem;
+      height: 0.66rem;
+      line-height: 0.66rem;
+      text-align: center;
+      border-radius: 0.38rem;
+      background-image: linear-gradient(to bottom, #ffedc6, #ffd57d);
+      color: #533510 !important;
+    }
+    .van-dialog__content {
+      background-color: #4c4a64 !important;
+      .m-vital-confirm {
+        box-shadow: 0 0 0.12rem 0 rgba(0, 0, 0, 0.31) !important;
+        background-image: linear-gradient(to bottom, #413f56 1%, #2b293e) !important;
+        .m-button {
+          width: 4rem;
+          height: 0.9rem;
+          border-radius: 1rem;
+          color: #533510 !important;
+          box-shadow: none !important;
+          background-image: linear-gradient(to bottom, #ffedc6, #ffd57d) !important;
+        }
+      }
+      .van-dialog__message {
+        color: white !important;
+      }
+    }
+    .van-dialog__footer {
+      .van-button--default {
+        background-image: linear-gradient(to bottom, #efcea6, #dab591) !important;
+        color: #533510 !important;
+        font-size: 0.16rem !important;
+        font-weight: 500 !important;
+      }
+    }
+  }
+}
+
+

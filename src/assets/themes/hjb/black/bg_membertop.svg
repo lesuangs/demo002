@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="374" height="348" viewBox="0 0 374 348">
+    <defs>
+        <filter id="9g460u9uvc" width="147.1%" height="147.1%" x="-23.5%" y="-23.5%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12"/>
+        </filter>
+        <filter id="zgyvdynute" width="215%" height="215%" x="-57.5%" y="-57.5%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="23"/>
+        </filter>
+        <filter id="uyo19cdygf" width="100%" height="100%" x="0%" y="0%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic"/>
+        </filter>
+        <filter id="r6vg0u0bag" width="100%" height="100%" x="0%" y="0%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic"/>
+        </filter>
+        <filter id="0r860m5nhh" width="100%" height="100%" x="0%" y="0%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic"/>
+        </filter>
+        <filter id="c25b4b63vi" width="100%" height="100%" x="0%" y="0%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic"/>
+        </filter>
+        <filter id="moro2ze5mj" width="100%" height="100%" x="0%" y="0%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="20hdetoggb" x1="45.52%" x2="45.52%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#443281"/>
+            <stop offset="100%" stop-color="#24252D"/>
+        </linearGradient>
+        <path id="3fg1cy7eva" d="M41 71L416 71 416 419 41 419z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g transform="translate(-1) translate(-40 -71)">
+                <mask id="prqjhu1n1d" fill="#fff">
+                    <use xlink:href="#3fg1cy7eva"/>
+                </mask>
+                <use fill="url(#20hdetoggb)" xlink:href="#3fg1cy7eva"/>
+                <circle cx="354.5" cy="76.5" r="76.5" fill="#602CA6" fill-opacity=".622" filter="url(#9g460u9uvc)" mask="url(#prqjhu1n1d)"/>
+                <circle cx="89" cy="253" r="60" fill="#472CA6" fill-opacity=".489" filter="url(#zgyvdynute)" mask="url(#prqjhu1n1d)"/>
+                <circle cx="133.5" cy="172.5" r="28.5" fill="#472CA6" fill-opacity=".489" filter="url(#uyo19cdygf)" mask="url(#prqjhu1n1d)"/>
+                <circle cx="153.5" cy="270.5" r="8.5" fill="#472CA6" fill-opacity=".489" filter="url(#r6vg0u0bag)" mask="url(#prqjhu1n1d)"/>
+                <circle cx="354.5" cy="283.5" r="30.5" fill="#312CA6" fill-opacity=".489" filter="url(#0r860m5nhh)" mask="url(#prqjhu1n1d)"/>
+                <circle cx="324.5" cy="144.5" r="8.5" fill="#7B52CD" fill-opacity=".489" filter="url(#c25b4b63vi)" mask="url(#prqjhu1n1d)"/>
+                <circle cx="41" cy="221" r="41" fill="#7B52CD" fill-opacity=".079" filter="url(#moro2ze5mj)" mask="url(#prqjhu1n1d)"/>
+            </g>
+        </g>
+    </g>
+</svg>
