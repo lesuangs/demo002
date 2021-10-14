@@ -346,30 +346,11 @@
           });
           return;
         }
-        this.$toast.loading(this.$t('lang.common.loading'))
+
         this.$http.account.queryTransfer(data).then((res) => {
-          // alert('queryTransfer')
+          alert('queryTransfer')
           //this.step++应该放在成功回调中
-          let getData = res.data;
-          //this.step++应该放在成功回调中
-          if(res.code === 200){
-            if(res.data === true){
-              this.$toast.clear();
-              this.step++;
-            }else{
-              let getMsg = getData.msg ? getData.msg : getData.message;
-              this.$toast.success({
-                message: getMsg,
-                forbidClick: true,
-              });
-            }
-          }else{
-            let getMsg = res.msg ? res.msg : res.message;
-            this.$toast.success({
-              message: getMsg,
-              forbidClick: true,
-            });
-          }
+          this.step++
         }).catch(err => {
           this.$toast.fail({
             message: err.data.msg,

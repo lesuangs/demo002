@@ -112,16 +112,81 @@ const vi = {
     },
     register:{
       accountType:['Loại người dùng', 'Thành viên', 'Người đại diện'],
-      userNickname:['Biệt hiệu của người dùng', 'Vui lòng nhập biệt hiệu của người dùng', 'Biệt hiệu bao gồm 2-15 ký tự, chữ cái hoặc số Trung Quốc'],
-      loginAccount:['Số tài khoản đăng nhập', 'Vui lòng nhập số tài khoản đăng nhập', 'Số tài khoản bắt đầu bằng một chữ cái và bao gồm 6-10 chữ cái và số hoặc dấu gạch dưới'],
+      // userNickname:['Biệt hiệu của người dùng', 'Vui lòng nhập biệt hiệu của người dùng', 'Biệt hiệu bao gồm 2-15 ký tự, chữ cái hoặc số Trung Quốc'],
+      // loginAccount:['Số tài khoản đăng nhập', 'Vui lòng nhập số tài khoản đăng nhập', 'Số tài khoản bắt đầu bằng một chữ cái và bao gồm 6-10 chữ cái và số hoặc dấu gạch dưới'],
       actualName:['Tên thật', 'Vui lòng nhập tên thật của bạn', 'Tên thật có từ 2 đến 20 ký tự Trung Quốc'],
       memberPhone:['Số điện thoại thành viên', 'Vui lòng nhập số điện thoại thành viên', 'Số điện thoại có 11 chữ số'],
-      userPwd:['Mật khẩu đăng nhập', 'Vui lòng nhập mật khẩu', 'Mật khẩu bao gồm 6-12 chữ cái và số hoặc dấu gạch dưới, không phải số thuần túy'],
+      // userPwd:['Mật khẩu đăng nhập', 'Vui lòng nhập mật khẩu', 'Mật khẩu bao gồm 6-12 chữ cái và số hoặc dấu gạch dưới, không phải số thuần túy'],
       oldPwd:['Mật khẩu cũ', 'Vui lòng nhập mật khẩu cũ', 'Mật khẩu có ít nhất 6 chữ số'],
-      confirmPwd:['Xác nhận mật khẩu', 'Vui lòng nhập lại mật khẩu', 'Hai mật khẩu không nhất quán'],
+      // confirmPwd:['Xác nhận mật khẩu', 'Vui lòng nhập lại mật khẩu', 'Hai mật khẩu không nhất quán'],
       changeNewPwd:['Mật khẩu mới', 'Vui lòng nhập mật khẩu mới'],
       changeRePwd:['Xác nhận mật khẩu mới', 'Vui lòng nhập lại mật khẩu mới'],
       hasValue:['Tài khoản đã tồn tại'],
+
+      account: ['tài khoản ',' nhập tài khoản '],
+      user: ['tài khoản ',' nhập tài khoản ', 'nhập 4-12 chữ cái bằng tiếng anh hoặc số và bắt đầu với một chữ cái! ',' lặp lại tài khoản ',' tên người dùng không phải là trống ',' kiểm tra tên tài khoản '],
+      password: ['mật khẩu ',' nhập mật khẩu ', 'nhập 6-12 chữ số hoặc tiếng anh! ',],
+      confirm_password: ['xác nhận mật khẩu ',' nhập mật khẩu một lần nữa ', 'hai mật khẩu không phù hợp'],
+      full_name: ['tên thật ',' nhập tên thật ',' nhập tên thật hợp lệ'],
+      nickname: ['biệt hiệu ',' nhập biệt hiệu ', 'nhập 2-15 ký tự trung quốc, chữ cái hoặc chữ số'],
+      weixin: ['ứng dụng ',' nhập micro-tín hiệu ',' micro-tín hiệu là không đúng định dạng'],
+      email: ['hộp thư ',' nhập hộp thư ',' định dạng hộp thư là không đúng'],
+      phone: ['điện thoại di động ',' nhập điện thoại di động ',' định dạng điện thoại là không đúng'],
+      qq: ['QQ',' xin vui lòng nhập QQ',' định dạng QQ là không đúng '],
+      fund_pwd:['mật khẩu tài chính ',' nhập mật khẩu tài chính ',' mật khẩu tài chính được hình thành bởi 4 chữ số'],
+      phone_code:['mã quảng cáo ',' nhập mã quảng cáo ',' định dạng mã quảng cáo là không đúng'],
+      birthday:['sinh nhật ',' chọn ngày sinh nhật ',' sinh nhật không phải là trống rỗng'],
+      referral_code: ['mã mời ',' nhập mã mời'],
+      help: [
+        'Quên mật khẩu? ',
+        'Không tài khoản? ',
+        'Có một tài khoản? ',
+        'Đăng nhập',
+        'lưu ý'
+      ],
+      agreement: ['đăng ký đại diện cho bạn đã đồng ý các hiệp ước mở ',' thỏa thuận ',],
+      tips: ['đăng ký thành công, sẽ đăng nhập'],
+
+    },
+    registerContent: {
+      accountNumber: 'số tài khoản',
+      verificationCode: 'Mã xác nhận',
+      invitationCode: 'Mã mời',
+      pleaseConfirmYourPassword: 'Vui lòng xác nhận mật khẩu của bạn',
+      pleaseEnterTheInvitationCode: 'Vui lòng nhập mã mời',
+      accountAlreadyExists: 'Tài khoản đã tồn tại',
+      alreadyHaveAnAccount: 'Bạn co săn san để tạo một tai khoản',
+      signInNow: 'đăng nhập ngay lập tức',
+      agreedTreaties: 'Đăng ký có nghĩa là bạn đã đồng ý với các hiệp ước mở đầu',
+      openAgreement: 'Thỏa thuận mở tài khoản',
+
+
+      shuRuGuiZe: 'Số tài khoản bao gồm 6-10 chữ cái, số hoặc dấu gạch dưới',
+      pwdRule: 'Mật khẩu bao gồm 6-12 chữ cái và số hoặc dấu gạch dưới, không phải số thuần túy',
+      password: ['Mật khẩu', 'vui lòng nhập mật khẩu'],
+      confirmPassword: ['Xác nhận mật khẩu', 'Vui lòng nhập lại mật khẩu', 'Nhập mật khẩu không nhất quán'],
+      Account: ['Tài khoản', 'Vui lòng nhập số tài khoản'],
+      vCode:['Mã xác minh', 'Vui lòng nhập mã xác minh', 'Không được để trống mã xác minh'],
+      tips:['Đã đăng ký thành công, sẽ đăng nhập sớm'],
+      error_tips:['đăng ký thất bại'],
+
+
+      realName: ['Tên thật ',' hãy nhập tên thật ',' tên thật đã tồn tại'],
+      emailInfo: ['hộp thư ',' hãy nhập vào hộp thư'],
+      phoneInfo: ['số điện thoại di động ',' xin vui lòng nhập số điện thoại di động ',' số điện thoại đã tồn tại'],
+      phonePromotion: ['mã quảng cáo điện thoại di động ',' hãy nhập mã quảng cáo điện thoại di động'],
+      qqNumber: ['QQ',' xin vui lòng nhập số QQ'],
+      weChat: ['ứng dụng'],
+      bornInfo: ['sinh nhật ',' hãy chọn ngày sinh nhật ',' hãy nhập captcha'],
+      weixin: ['ứng dụng ',' hãy nhập micro-tín hiệu','Micro-tín hiệu không đúng định dạng'],
+      email: ['hộp thư ',' hãy nhập vào hộp thư','Định dạng tài khoản email là không đúng'],
+      phone: ['số điện thoại di động ',' xin vui lòng nhập số điện thoại di động','Định dạng số điện thoại không đúng'],
+      qq: ['QQ',' xin vui lòng nhập số QQ','Định dạng QQ là không đúng'],
+      fund_pwd:['mật khẩu tài chính ',' hãy nhập mật khẩu tài chính ',' mật khẩu tài chính được hình thành bởi 4 chữ số'],
+      phone_code:['mã quảng cáo điện thoại di động ',' xin vui lòng nhập mã quảng cáo điện thoại di động ',' định dạng mã quảng cáo là không đúng'],
+
+      birthday:['Sinh nhật','hãy chọn ngày sinh nhật','Sinh nhật không phải là trống rỗng'],
+
 
     },
     lotteryTips: {
@@ -276,6 +341,9 @@ const vi = {
       quickRegister: 'đăng kí nhanh',
       register: 'đã đăng ký',
       lottery: 'Vé số',
+      sports: 'Thể thao',//体育
+      chess: 'Lĩnh vực',//棋牌
+      fishing: 'Đánh bắt cá',//捕鱼
       registerNow: 'Đăng ký ngay',
       retrievePassword: 'Lấy lại mật khẩu',
       PLZenterUserName: 'Vui lòng nhập tên người dùng',
@@ -293,40 +361,7 @@ const vi = {
       loginInErr:'Đã hết thời gian đăng nhập, vui lòng đợi một lúc và thử lại！',
       loginTimeout:'Đã hết thời gian đăng nhập, vui lòng đăng nhập lại',
     },
-    registerContent: {
-      accountNumber: 'số tài khoản',
-      verificationCode: 'Mã xác nhận',
-      invitationCode: 'Mã mời',
-      pleaseConfirmYourPassword: 'Vui lòng xác nhận mật khẩu của bạn',
-      pleaseEnterTheInvitationCode: 'Vui lòng nhập mã mời',
-      accountAlreadyExists: 'Tài khoản đã tồn tại',
-      alreadyHaveAnAccount: 'Bạn co săn san để tạo một tai khoản',
-      signInNow: 'đăng nhập ngay lập tức',
-      agreedTreaties: 'Đăng ký có nghĩa là bạn đã đồng ý với các hiệp ước mở đầu',
-      openAgreement: 'Thỏa thuận mở tài khoản',
 
-
-      shuRuGuiZe: 'Số tài khoản bao gồm 6-10 chữ cái, số hoặc dấu gạch dưới',
-      pwdRule: 'Mật khẩu bao gồm 6-12 chữ cái và số hoặc dấu gạch dưới, không phải số thuần túy',
-      password: ['Mật khẩu', 'vui lòng nhập mật khẩu'],
-      confirmPassword: ['Xác nhận mật khẩu', 'Vui lòng nhập lại mật khẩu', 'Nhập mật khẩu không nhất quán'],
-      Account: ['Tài khoản', 'Vui lòng nhập số tài khoản'],
-      vCode:['Mã xác minh', 'Vui lòng nhập mã xác minh', 'Không được để trống mã xác minh'],
-      tips:['Đã đăng ký thành công, sẽ đăng nhập sớm'],
-      error_tips:['đăng ký thất bại'],
-
-
-      realName: ['Tên thật ',' hãy nhập tên thật ',' tên thật đã tồn tại'],
-      emailInfo: ['hộp thư ',' hãy nhập vào hộp thư'],
-      phoneInfo: ['số điện thoại di động ',' xin vui lòng nhập số điện thoại di động ',' số điện thoại đã tồn tại'],
-      phonePromotion: ['mã quảng cáo điện thoại di động ',' hãy nhập mã quảng cáo điện thoại di động'],
-      qqNumber: ['QQ',' xin vui lòng nhập số QQ'],
-      weChat: ['ứng dụng'],
-      bornInfo: ['sinh nhật ',' hãy chọn ngày sinh nhật ',' hãy nhập captcha'],
-
-
-
-    },
     withDraw: {
       tiXianTongGuo: 'Sau khi rút tiền thành công, số tiền rút của bạn dự kiến ​​sẽ đến chậm nhất trong vòng 24 giờ, nếu không đến được, vui lòng liên hệ với bộ phận chăm sóc khách hàng',
       mingRiTiKuna: 'Số lần rút tiền hôm nay đã vượt quá giới hạn, vui lòng đăng ký rút tiền vào ngày mai！',
@@ -581,8 +616,11 @@ const vi = {
       hasWon: 'Đã thắng',
       noDraw: 'Không có giải thưởng',
 
+
+
       orderCancelled: 'Đơn đặt hàng đã bị hủy',
       bets: 'Cá cược',
+      noteNumber: 'Số ghi chú',//注单号
     },
     DatePicker: {
       chooseTimePeriod: 'Chọn khoảng thời gian',

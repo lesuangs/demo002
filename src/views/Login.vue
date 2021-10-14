@@ -60,7 +60,7 @@
               </template>
             </van-field>
             <div class="code-img-box">
-              <img @click="getVerifyCode" :src="verifyCodeImg" alt="">
+              <img @click="getVerifyCode" :src="verifyCodeImg" alt="" class="mod-vode-img">
 <!--              <img @click="handleChangeImg" :src="'/v/vCode?t=' + t" alt=""/>-->
             </div>
           </div>

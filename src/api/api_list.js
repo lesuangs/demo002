@@ -19,9 +19,9 @@ export const API = {
   GET_LIVE_GAME_LIST: 'api/live/qst', // 具体某一个list
   GET_TOTAL_BALANCE: '/api/live/getTotalBalance',//获取第三方游戏余额接口
   TRANSFER_AMOUNT: '/api/live/transferAmount',//提交——平台之间的额度转换
-  GET_MESSAGE: '/api/pushMessage/queryPage', // 获取站内消息
-  READ_MESSAGE_STATUS: '/api/pushMessage/modifyReadStatus', // 读取状态
-  DELETE_MESSAGE: '/api/pushMessage/remove', // 删除信息
+  GET_MESSAGE: 'api/pushMessage/queryPage', // 获取站内消息
+  READ_MESSAGE_STATUS: 'api/pushMessage/modifyReadStatus', // 读取状态
+  DELETE_MESSAGE: 'api/pushMessage/remove', // 删除信息
   GET_ALL_ACTIVITY: '/v/getAllActivity' + tenantCode, // 所有的活动
   GET_PLAY_CATE: '/v/lottery/getPlayCate' + tenantCode, // 奖金详情
   CREDIT_BETTING: '/api/bet', // 双面盘
@@ -49,6 +49,8 @@ export const API = {
   GET_RECHARGE_CONFIG: '/api/recharge/getRechargeConfig',//金额充值范围
 
   GET_DL_RANGE: '/api/dl/getDlSubRebateRange',//获取当前登录用户返点层级
+  GET_REG_LIMIT: '/v/getRegLimit' + tenantCode,// 注册前验证接口
+  GET_CONFIG_BANK: '/api/config/getConfigBank',// 银行卡信息
 
   // TIPS:'/data/json/rules/lhc_exam.json'
 }

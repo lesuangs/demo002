@@ -5,8 +5,7 @@
       <div class="y-list" v-if="list.length > 0">
         <template v-for="(v, i) in list">
           <div class="y-item" :key="i" @click="openDel(v, i)">
-<!--            <img :src="v.imgUrl"/>-->
-            <img :src="imgAddress + v.imgUrl" alt="">
+            <img :src="v.imgUrl"/>
             <div class="y-wrap">
               <div class="y-con">
                 <!--                <van-icon name="arrow" />-->
@@ -30,7 +29,7 @@
           <van-icon size="18"/>
         </van-nav-bar>
         <div class="del-content">
-          <img :src="imgAddress + titlePic" alt="">
+          <img :src="titlePic"/>
           <div class="del-wrap">
             <p class="title">{{ y_title }}</p>
             <p class="date"><em>{{$t('lang.Promotions.ActivityTime')}}：</em> {{ y_date }}</p>
@@ -56,8 +55,7 @@
     },
     computed: {
       ...mapState([
-        'allActivityList',
-        'imgAddress',
+        'allActivityList'
       ]),
       list(){
         return this.allActivityList
@@ -118,14 +116,8 @@
     .y-list {
       .y-con {
         color: #fff;
-        .iconfont{
-          font-size:12px;
-          color:#737476;
-          margin-right: 10px;
-        }
       }
       .time {
-        margin:0.2rem 0 0 21px;
         em {
           color: #efcea6;
         }
@@ -199,6 +191,13 @@
         height: 100%;
         overflow-y: scroll;
         /*padding: 15px 10px;*/
+        span {
+          color: #666;
+          margin: 0.2rem 0 0 0.3rem;
+          /*em{*/
+          /*  color:#606070;*/
+          /*}*/
+        }
         .y-item {
           /*border-radius: 0.1rem;*/
           /*border: 0.01rem solid #ddd;*/

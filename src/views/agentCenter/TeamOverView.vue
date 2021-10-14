@@ -3,8 +3,8 @@
     <Header :headObj="headObj" @leftClick="$router.push('/agentCenter')" @rightClick="timeShow=!timeShow"/>
     <NotData v-if="Object.keys(teamData).length === 0 " :isNotData="isNotData"/>
     <div class="contentHidden" v-else>
-      <div class="team-over-view-wrap">
-        <div class="team-item">
+      <div class="g-content">
+        <div class="listStyle">
           <van-cell-group>
             <div class="content-title">{{ $t('lang.daiLiZhongXin.teamSize') }}</div>
             <van-cell :title="$t('lang.teamOverview.totalNumberTeam')" title-style="font-weight:500"
@@ -14,7 +14,7 @@
             <van-cell :title="$t('lang.teamOverview.numberFirstCharge')" :value="teamData.firstRechargeCount"/>
           </van-cell-group>
         </div>
-        <div class="team-item">
+        <div class="listStyle">
           <van-cell-group>
             <div class="content-title">{{ $t('lang.teamOverview.netProfit') }}</div>
             <div class="netProfit">
@@ -28,7 +28,7 @@
             <!--          <van-cell title-style="" width="3rem" title="净利润=游戏输赢+优惠+代理总计" title-style="font-weight:500" value="545465元" />-->
           </van-cell-group>
         </div>
-        <div class="team-item sss">
+        <div class="listStyle">
           <van-cell-group>
             <div class="content-title">{{ $t('lang.teamOverview.depositAndWithdrawal') }}</div>
             <van-cell :title="$t('lang.common.Balance')" title-style="font-weight:500"
@@ -36,10 +36,10 @@
             <van-cell :title="$t('lang.user.Recharge')"
                       :value="teamData.rechargeCount === 0 || teamData.rechargeCount === null? '0.00':teamData.rechargeCount.toFixed(2)"/>
             <van-cell :title="$t('lang.user.withdraw')"
-                      :value="teamData.rwReport.withdrawMoney ===0 ||teamData.rwReport.withdrawMoney ===null?'0.00':teamData.rwReport.withdrawMoney.toFixed(2)"/>
+                      v-model="teamData.rwReport.withdrawMoney ===0 ||teamData.rwReport.withdrawMoney ===null?'0.00':teamData.rwReport.withdrawMoney.toFixed(2)"/>
           </van-cell-group>
         </div>
-        <div class="team-item">
+        <div class="listStyle">
           <van-cell-group>
             <div class="content-title">{{ $t('lang.auditDetails.Discount') }}</div>
 
@@ -49,7 +49,7 @@
                       :value="teamData.rwReport.otherDiscount ===0 ||teamData.rwReport.otherDiscount ===null?'0.00':teamData.rwReport.otherDiscount.toFixed(2)"/>
           </van-cell-group>
         </div>
-        <div class="team-item">
+        <div class="listStyle">
           <van-cell-group>
             <div class="content-title">{{ $t('lang.loginContent.lottery') }}</div>
 
@@ -58,11 +58,11 @@
             <van-cell :title="$t('lang.teamOverview.rebateAmount')"
                       :value="teamData.cpBetReport.rebateMoney ===0 ||teamData.cpBetReport.rebateMoney ===null?'0.00':teamData.cpBetReport.rebateMoney.toFixed(2)"/>
             <van-cell
-                    :title="$t('lang.NoteHistory.AmountWinningLosing')"
-                    :value="teamData.cpBetReport.winOrcloseMoney > 0 ? '-'+ teamData.cpBetReport.winOrcloseMoney.toFixed(2):Math.abs(teamData.cpBetReport.winOrcloseMoney).toFixed(2)"/>
+                :title="$t('lang.NoteHistory.AmountWinningLosing')"
+                :value="teamData.cpBetReport.winOrcloseMoney > 0 ? '-'+ teamData.cpBetReport.winOrcloseMoney.toFixed(2):Math.abs(teamData.cpBetReport.winOrcloseMoney).toFixed(2)"/>
           </van-cell-group>
         </div>
-        <div class="team-item">
+        <div class="listStyle">
           <van-cell-group>
             <div class="content-title">{{ $t('lang.teamOverview.agentTotal') }}</div>
             <van-cell :title="$t('lang.AccountDetail.agentRebate')" title-style="font-weight:500"
@@ -74,35 +74,35 @@
         </div>
       </div>
       <div class="dialog">
-        <!-- 日期选择器-->
+
         <van-popup
-                v-model="timeShow"
-                position="top"
-                :style="{ height: '100%' }"
-                :overlay-style="{backgroundColor:'rgba(0,0,0,.3)'}"
+            v-model="timeShow"
+            position="top"
+            :style="{ height: '100%' }"
+            :overlay-style="{backgroundColor:'rgba(0,0,0,.3)'}"
         >
           <div class="popup_body">
             <div class="inner">
               <DatePicker
-                      :btnDanger="btnDanger"
-                      :btnDefault="btnDefault"
-                      :btnDefault1="btnDefault1"
-                      :showPickerStart="showPickerStart"
-                      :showPickerEnd="showPickerEnd"
-                      :startTime="startTime" :endTime="endTime"
-                      :startTime1="startTime1" :endTime1="endTime1"
-                      :startTime2="startTime2" :endTime2="endTime2"
-                      :type="type"
-                      @clickLeftDate="(showPickerStart = true) && (showPickerEnd=false)"
-                      @clickRightDate="(showPickerEnd = true) && (showPickerStart = false)"
-                      @clickCloseStart="handlePickStartSure"
-                      @clickCloseEnd="handlePickEndSure"
-                      @clickCancelStart="handleStartCancel"
-                      @clickCancelEnd="handleEndCancel"
-                      @handleSubmit="handleSure"
-                      @handleBtns="handleBtn"
-                      @emitStarttime="handleEmitStart"
-                      @emitEndtime="handleEmitEnd"
+                  :btnDanger="btnDanger"
+                  :btnDefault="btnDefault"
+                  :btnDefault1="btnDefault1"
+                  :showPickerStart="showPickerStart"
+                  :showPickerEnd="showPickerEnd"
+                  :startTime="startTime" :endTime="endTime"
+                  :startTime1="startTime1" :endTime1="endTime1"
+                  :startTime2="startTime2" :endTime2="endTime2"
+                  :type="type"
+                  @clickLeftDate="(showPickerStart = true) && (showPickerEnd=false)"
+                  @clickRightDate="(showPickerEnd = true) && (showPickerStart = false)"
+                  @clickCloseStart="handlePickStartSure"
+                  @clickCloseEnd="handlePickEndSure"
+                  @clickCancelStart="handleStartCancel"
+                  @clickCancelEnd="handleEndCancel"
+                  @handleSubmit="handleSure"
+                  @handleBtns="handleBtn"
+                  @emitStarttime="handleEmitStart"
+                  @emitEndtime="handleEmitEnd"
               />
             </div>
           </div>
@@ -314,12 +314,9 @@ export default {
 <style lang="scss" scoped>
   .team-over-view-box{
     height:100%;
+    overflow: scroll;
     display: flex;
     flex-direction: column;
-    .contentHidden{
-      flex:1;
-      overflow-y: scroll;
-    }
     .content-title{
       font-size: px2rem(14px);
       height:px2rem(40px);
@@ -327,25 +324,12 @@ export default {
       align-items: center;
       padding:0 px2rem(16px);
     }
-    .van-cell,.netProfit{
+     .van-cell{
+       color:#fff;
       padding:px2rem(13px) px2rem(16px);
-      font-size: px2rem(15px);
-      color:#fff;
     }
-    .van-cell__value{
-      color:#fff;
-    }
-
-    .netProfit{
-      display: flex;
-      justify-content: space-between;
-     /* span:last-child{
-        color:red;
-      }*/
-    }
-    .team-item{
-      margin-bottom: px2rem(15px);
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .listStyle{
+      margin-bottom: 0;
     }
 
   }
@@ -376,4 +360,32 @@ export default {
     }
   }
 
+
+
+.team-over {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentHidden {
+  flex: 1;
+  overflow: scroll;
+}
+
+/*.g-content {*/
+/*  background-color: #efeff4;*/
+/*}*/
+
+/*.content-title {*/
+/*  padding: .2rem .32rem;*/
+/*  line-height: .48rem;*/
+/*  font-size: .3rem;*/
+/*  !*font-weight: 600;*!*/
+/*  border-bottom: 0.02rem solid #ebedf0;*/
+/*}*/
+
+.listStyle {
+  margin-bottom: .3rem;
+}
 </style>

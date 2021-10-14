@@ -2,10 +2,22 @@
   <div class="ty-content lottery-note-box">
     <div class="tab-nav-box">
       <ul>
-        <li v-for="(v, i) in dzList" :key="i"
-            :class="[gameTabActive == i ? 'active' : '']" @click="getGame(i)">
-          <span>{{ $t(v) }}</span>
-        </li>
+<!--          -->
+<!--        <li v-for="(v, i) in dzList" :key="i"-->
+<!--            :class="[gameTabActive == i ? 'active' : '']" @click="getGame(i)">-->
+<!--          <span>{{ $t(v) }}</span>-->
+<!--        </li>-->
+<!--          后期修改-->
+
+          <li @click="showSet=!showSet">
+              <span>{{value[0]}} - {{value[1]}}</span>
+<!--              <span v-if="tabActive===1">{{value[0]}} - {{value[2]}}</span>-->
+              <i class="iconfont iconxia"></i>
+          </li>
+          <li @click="showStatus=!showStatus">
+              <span>{{statusText}}</span>
+              <i class="iconfont iconxia"></i>
+          </li>
       </ul>
     </div>
 <!--    <div class="game-tab">-->
@@ -34,15 +46,17 @@
               <div
                   class="a-item"
                   :key="i"
-                  @click="$emit('showCpDel', v, gameNames[v.gameId])"
+                  @click="$emit('showCpDel', v, v)"
               >
                 <div class="top">
 <!--                  <span v-if="gameNames[v.gameId] && gameNames[v.gameId].name">{{gameNames[v.gameId].name}}</span>-->
                   <span>{{v.gameName}}</span>
+<!--                    <span v-if="gameNames[v.gameId] && gameNames[v.gameId].name">{{gameNames[v.gameId].name}}</span>-->
+<!--                    <span v-else>{{$t('lang.common.loading')}}</span>-->
 <!--                  <span v-else>{{$t('lang.common.loading')}}</span>-->
                   <div>
                     <!-- <span> 第{{ v.turnNum }}期 | </span>-->
-                    <span v-if="v.status === 0">{{$t('lang.lotteryNote.noDraw')}}</span>
+                    <span v-if="v.status === 0" >{{$t('lang.lotteryNote.noDraw')}}</span>
                     <span
                         v-else-if="v.status === 1"
                         :style="v.result === 0 ? 'color: RGB(89,174,89);' : 'color:red' ">
@@ -52,7 +66,7 @@
                             : `${$t('lang.state.win')}&nbsp;+${v.reward.toFixed(2)} ${$t('lang.common.yuan')}`
                             : $t('lang.state.noWin')
                       }}</span>
-                    <span v-else-if="v.status === 2">{{$t('lang.lotteryNote.cancelOrder')}}</span>
+                    <span v-else-if="v.status === 2" style="color: #A1A3A5">{{$t('lang.lotteryNote.cancelOrder')}}</span>
                     <span v-else>{{$t('lang.lotteryNote.abnormalOrder')}}</span>
                   </div>
                 </div>
@@ -76,6 +90,43 @@
 <!--        <i @click="$router.push('/reg')">{{$t('lang.loginContent.register')}}</i>-->
 <!--      </div>-->
 <!--    </div>-->
+      <!--    选择彩种 组件-->
+      <transition name="van-slide-up">
+          <van-popup v-model="showSet" position="bottom" class="mod-select-picker-box">
+              <van-picker
+                      show-toolbar
+                      :value="value"
+                      :VList="VList"
+                      :title="$t('lang.LotteryPicker.chooseLottery')"
+                      :columns="columns"
+                      @cancel="showSet = false"
+                      @confirm="onConfirm"
+                      cancel-button-text=" "
+                      :confirm-button-text="$t('lang.common.buttonTextConfirm')"
+              >
+              </van-picker>
+          </van-popup>
+      </transition>
+
+      <!--      状态组件-->
+      <transition name="van-slide-up">
+          <van-popup v-model="showStatus" position="bottom" class="mod-select-picker-box">
+              <van-picker
+                      show-toolbar
+                      :value="statusText"
+                      :title="$t('lang.lotteryNote.orderStatus')"
+                      :columns="statusList"
+                      @cancel="showStatus = false"
+                      @confirm="getStatus"
+                      cancel-button-text=" "
+                      :confirm-button-text="$t('lang.common.buttonTextConfirm')"
+              >
+              </van-picker>
+          </van-popup>
+      </transition>
+
+
+
   </div>
 </template>
 <script>
@@ -97,11 +148,14 @@ export default {
     ])
   },
   props: {
-    startTime: Date,
-    endTime: Date,
-    timeShow: Boolean,
+    // startTime: Date,
+    // endTime: Date,
+    // timeShow: Boolean,
     listData: Object,
-    gameId: Number,
+    // gameId: Number,
+    columns: Array,
+    tabActive: 0
+
   },
   data() {
     return {
@@ -110,6 +164,12 @@ export default {
         "lang.lotteryNote.hasWon",
         "lang.lotteryNote.noDraw",
         "lang.lotteryNote.orderCancelled",
+      ],
+      statusList: [
+        {text:this.$t('lang.lotteryNote.allOrders'),status:''},
+        {text:this.$t('lang.lotteryNote.hasWon'),status:1},
+        {text:this.$t('lang.lotteryNote.orderCancelled'),status:2},
+        {text:this.$t('lang.lotteryNote.toTheLottery'),status:0},
       ],
       noteList: [],
       gameNames: {},
@@ -136,7 +196,13 @@ export default {
       startY: 0, // 纵轴方向初始化位置
       gameTabActive: 0,
       page: 1,
-      status: 0,
+      status: '',
+      showSet: false,
+      showStatus: false,
+      statusText: this.$t('lang.lotteryNote.allState'),
+      value: [this.$t('lang.RechargeData.All'), this.$t('lang.lotteryNote.allTickets'),this.$t('lang.lotteryNote.allBalls')],
+      gameId: 0,
+      VList: [0, 0],
       dataDel: {},
     };
   },
@@ -170,62 +236,144 @@ export default {
         this.queryData(this.page, 2);
       }, 500);
     },
-    queryData(page, type) {
+    // queryData(page, type) {
+    //   const _t = (Date.parse(new Date()) / 1000).toString();
+    //   const params = {
+    //     page: page,
+    //     rows: 10,
+    //     _t,
+    //   };
+    //   if (this.status === 1) {
+    //     params.result = 1;
+    //   } else if (this.status === 2) {
+    //     params.status = 0;
+    //   } else if (this.status === 3) {
+    //     params.status = 2;
+    //   }
+    //   if (this.gameId !== 0) {
+    //     params.gameId = this.gameId;
+    //   }
+    //   this.$http.home.getCpNote(params).then((res) => {
+    //     // console.log(res.data.data,33333)
+    //     let data = res.data.data;
+    //     let otherData = res.data.otherData;
+    //     let seachData = this.searchLotteryList;
+    //     console.log(seachData, 'seachData999999888')
+    //     for (let a of data) {
+    //       for (let b of seachData) {
+    //         if (a.gameId === b.id && b.model === a.model) {
+    //           // console.log(b.name,9999);
+    //           a.gameName = b.name;
+    //           // console.log(b,2222)
+    //         }
+    //       }
+    //     }
+    //     console.log(data,'getCpNote222222222222')
+    //     // let gameNames = otherData.gameNames || {}
+    //     this.totalCount = res.data.totalCount;
+    //     this.noteList = type === 2 ? this.noteList.concat(res.data.data) : res.data.data;
+    //
+    //     if (data.length === 0) {
+    //       this.isNotData = false;
+    //
+    //     } else {
+    //       // this.gameNames = {...this.gameNames, ...gameNames}
+    //
+    //       let isForceUpdate = this.noteList.length === this.totalCount;
+    //       setTimeout(() => {
+    //         this.$refs.Nscroll.forceUpdate(!isForceUpdate);
+    //       }, 1000);
+    //     }
+    //     // console.log(this.noteList,'noteList noteList')
+    //   })
+    //       .catch((err) => {
+    //         console.log(err);
+    //         if (err.status === 400) {
+    //           this.isNotData = false;
+    //           this.noLogin = true;
+    //         }
+    //       });
+    // },
+    queryData(page,type) {
       const _t = (Date.parse(new Date()) / 1000).toString();
       const params = {
         page: page,
         rows: 10,
+        gameId:this.gameId,
         _t,
       };
       if (this.status === 1) {
         params.result = 1;
-      } else if (this.status === 2) {
-        params.status = 0;
-      } else if (this.status === 3) {
-        params.status = 2;
+      }else{
+        params.status = this.status;
       }
+
+      /*   else if (this.status === 2) {
+           params.status = 0;
+         } else if (this.status === 3) {
+           params.status = 2;
+         }*/
       if (this.gameId !== 0) {
         params.gameId = this.gameId;
       }
       this.$http.home.getCpNote(params).then((res) => {
-        console.log(res.data.total,33333)
-        let data = res.data.data;
-        let otherData = res.data.otherData;
-        let seachData = this.searchLotteryList;
-        console.log(seachData, 'seachData999999888')
-        for (let a of data) {
-          for (let b of seachData) {
-            if (a.gameId === b.id && b.model === a.model) {
-              // console.log(b.name,9999);
-              a.gameName = b.name;
-              // console.log(b,2222)
+                // console.log(res.data.data,33333)
+        if (res.code === 200) {
+          if (res.data.total === 0) {
+            this.isNotData = false;
+          } else {
+            let data = res.data.data;
+            // let otherData = res.data.otherData;
+            // console.log(otherData,"1111111111111");
+            // let otherData = res.data.otherData;
+            let seachData = this.searchLotteryList;
+            console.log(seachData, 'seachData999999888')
+            for (let a of data) {
+              for (let b of seachData) {
+                if (a.gameId === b.id && b.model === a.model) {
+                  // console.log(b.name,9999);
+                  a.gameName = b.name;
+                  a.code = b.code
+                  // console.log(b,2222)
+                }
+              }
             }
+            // let gameNames = otherData.gameNames || {}
+            // console.log(gameNames,'2222222222222...');
+            this.totalCount = res.data.totalCount;
+            this.noteList = type === 2 ? this.noteList.concat(res.data.data) : res.data.data;
+
+            // this.gameNames = {...this.gameNames, ...gameNames}
+
+            let isForceUpdate = this.noteList.length === this.totalCount;
+            setTimeout(() => {
+              this.$refs.Nscroll.forceUpdate(!isForceUpdate);
+            }, 100);
           }
-        }
-        console.log(data,'getCpNote222222222222')
-        // let gameNames = otherData.gameNames || {}
-        this.totalCount = res.data.total;
-        this.noteList = type === 2 ? this.noteList.concat(res.data.data) : res.data.data;
+        }   else {
+              this.$toast.fail({
+                message: res.msg,
+                icon: 'warning',
+                className: 'warning-toast'
+              });
+            }
 
-        if (res.data.total === 0) {
-          this.isNotData = false;
-        } else {
-          // this.gameNames = {...this.gameNames, ...gameNames}
-
-          let isForceUpdate = this.noteList.length === this.totalCount;
-          setTimeout(() => {
-            this.$refs.Nscroll.forceUpdate(!isForceUpdate);
-          }, 1000);
-        }
+        // console.log(this.isNotData,'0000000000')
         // console.log(this.noteList,'noteList noteList')
       })
           .catch((err) => {
             console.log(err);
-            if (err.status === 400) {
-              this.isNotData = false;
-              this.noLogin = true;
-            }
+            this.isNotData = false;
+            this.noLogin = true;
+            // this.$toast.fail(err.data.msg);
           });
+    },
+    getStatus(val) {
+      console.log(val)
+      this.status =  val.status;
+      this.queryData(1,1);
+      this.showStatus = false
+      this.statusText = val.text
     },
     getGame(i) {
       this.gameTabActive = i;
@@ -234,6 +382,22 @@ export default {
       this.page = 1;
       this.status = i;
       this.queryData(1, 1);
+    },
+    onConfirm(v, i) {
+      console.log(v, i)
+      // console.log(this.columns,'sssssssssssss');
+      if(i[0]===0 && i[1] === 0){
+        this.gameId = '';
+      }else{
+        this.gameId = this.columns[i[0]].children[i[1]].gameId;
+      }
+      this.value = [v[0],v[1]]
+      // console.log(this.gameId,' this.gameIdssssss');
+      // this.$emit('confirm', v, i)
+      // this.gameId = v.gameId
+
+      // this.queryData(1)
+      this.showSet = false
     },
   },
   watch: {
@@ -281,7 +445,15 @@ export default {
   }
   .skin-gray{
     .lottery-note-box{
-      .a-list{
+        .tab-nav-box {
+            background-color: #4C4A64!important;
+            ul li {
+                border-color: $skin-gray-border-color;
+                background-color: $skin-gray-bg;
+            }
+        }
+
+        .a-list{
         .a-item{
           background: $skin-gray-con-bg;
           &:not(:last-child){
@@ -480,5 +652,44 @@ export default {
     }
   }
 }
+  /*后期修改添加*/
+  .tab-nav-box {
+      background-color: #191B1F!important;
+      min-height: 65px!important;
+          li:nth-child(1) {
+              width: px2rem(187px);
+              height: px2rem(40px);
+              border-radius: 20px;
+              line-height: px2rem(40px);
+              color: #fff;
+              border: solid 1px #393940;
+              justify-content: space-between;
+              background-color: #24252D;
+              padding: 0 10px;
+              /*span {*/
+              /*    !*padding-right: 50px;*!*/
+              /*}*/
+              i {
+                  font-size: 3px;
+              }
+          }
 
+          li:nth-child(2) {
+              flex: 1;
+              height: px2rem(40px);
+              border-radius: 20px;
+              background-color: #24252D;
+              line-height: px2rem(40px);
+              color: #fff;
+              border: solid 1px #393940;
+              justify-content: space-between;
+              padding: 0 10px;
+              /*span {*/
+              /*    padding-right: 60px;*/
+              /*}*/
+              i {
+                  font-size: 3px;
+              }
+          }
+  }
 </style>

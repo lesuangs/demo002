@@ -49,12 +49,6 @@
   color: #c4aa88;
 }
 
-.van-action-sheet{
-  height:100% !important;
-  max-height: 100% !important;
-  border-radius: 0 !important;
-}
-
 //验证码图片的大小
 .mod-vode-img {
   width: px2rem(80px);
@@ -77,12 +71,7 @@
   }
   .top {
     h1 {
-      font-size: px2rem(15px);
-      display: flex;
-      .iconfont{
-        font-size:24px;
-        color:#DCB793;
-      }
+      font-size: px2rem(16px);
     }
     span {
       font-size: px2rem(14px);

@@ -157,7 +157,7 @@
     </div>
     <Footer :actived="active"/>
     <Customerserve :showDialog="showDialog" @closeDialog="handleCloseDialog"/>
-    <Dialog class="go-try-play-box" :showDialog="isTryPlay" @closeDialog="handleCloseDialog">
+    <Dialog class="try-play-box" :showDialog="isTryPlay" @closeDialog="handleCloseDialog">
       <div slot="content">
         <div class="content-center">
           <div class="dialog-title">{{ $t('lang.user.tryItForFree') }}</div>
@@ -181,38 +181,37 @@
         </div>
       </div>
     </Dialog>
-    <tryPlay :showDialog="isTryDialog" @closeDialog="handleCloseDialog"></tryPlay>
-<!--    <Dialog :showDialog="isTryDialog" @closeDialog="handleCloseDialog" class="try-play-box">
+    <Dialog :showDialog="isTryDialog" @closeDialog="handleCloseDialog" class="try-play-box">
       <div slot="content">
         <div class="m-vital-confirm">
           <div class="confirm-content">
             <div class="try-play-img"></div>
-            &lt;!&ndash;            <img src="https://sp-res-wap.ftfxgame.com/fusion/wap/release/static/img/group.461451e3.png"&ndash;&gt;
-            &lt;!&ndash;                 class="confirm-img">&ndash;&gt;
+            <!--            <img src="https://sp-res-wap.ftfxgame.com/fusion/wap/release/static/img/group.461451e3.png"-->
+            <!--                 class="confirm-img">-->
             <div class="dialog-message">
-              &lt;!&ndash;              <p>{{ $t('lang.tryItForFree.pleaseLogFirst') }}</p>&ndash;&gt;
+              <!--              <p>{{ $t('lang.tryItForFree.pleaseLogFirst') }}</p>-->
               <p>{{ $t('lang.user.notVIP') }}</p>
               <p>{{ $t('lang.user.howVip') }}</p>
 
             </div>
-            &lt;!&ndash;            <h1 class="fs-36 bold">{{ $t('lang.user.notVIP') }}</h1>&ndash;&gt;
-            &lt;!&ndash;            <p class="tip"></p>&ndash;&gt;
+            <!--            <h1 class="fs-36 bold">{{ $t('lang.user.notVIP') }}</h1>-->
+            <!--            <p class="tip"></p>-->
             <div class="dialog-footer">
               <span class="button cancel" @click="$router.push('/login')"> {{ $t('lang.loginContent.loginNow') }}</span>
               <i>|</i>
               <span class="button" @click="isTryDialog=false"> {{ $t('lang.loginContent.register') }}</span>
             </div>
-            &lt;!&ndash;            <div class="m-button" @click="$router.push('/login')">&ndash;&gt;
-            &lt;!&ndash;              {{ $t('lang.registerContent.signInNow') }}/{{ $t('lang.loginContent.register') }}&ndash;&gt;
-            &lt;!&ndash;            </div>&ndash;&gt;
-            &lt;!&ndash;            <p class="no" @click="isTryDialog=false">{{ $t('lang.user.cancel') }}</p>&ndash;&gt;
+            <!--            <div class="m-button" @click="$router.push('/login')">-->
+            <!--              {{ $t('lang.registerContent.signInNow') }}/{{ $t('lang.loginContent.register') }}-->
+            <!--            </div>-->
+            <!--            <p class="no" @click="isTryDialog=false">{{ $t('lang.user.cancel') }}</p>-->
           </div>
           <div class="close-box" @click="isTryDialog=false">
             <i class="iconfont iconic-close"></i>
           </div>
         </div>
       </div>
-    </Dialog>-->
+    </Dialog>
     <!--    <van-popup v-model="show" position="left" :style="{ width: '30%' }"><vant-popup/>-->
     <van-popup v-model="show" position="bottom" closeable class="user-lang-box">
       <h2 class="title"> {{ $t('lang.user.languageSelected') }}</h2>
@@ -227,13 +226,13 @@
              :class="$i18n.locale===LANG.english?'active':''">
           <img :src="require('@/assets/themes/hjb/black/flag_en.png')" alt="">
           <!--<p>{{ langType[1] && langType[1].name }}</p>-->
-          <p>英文</p>
+          <p>English</p>
         </div>
         <div class="langLogoStyle" @click="changeLang(LANG.Vietnam)"
              :class="$i18n.locale===LANG.Vietnam?'active':''">
           <img src="../assets/img/VNguoqi.png" alt="" >
           <!--          <p>{{ langType[2] && langType[2].name }}</p>-->
-          <p>越南</p>
+          <p>Tiếng Việt</p>
         </div>
         <!--        <div class="langLogoStyle" @click="$toast('暂未开放')">-->
         <!--          <img src="../assets/img/VNguoqi.png" alt="" style="width: .4rem;margin: .2rem;border-radius: .5rem">-->
@@ -246,7 +245,6 @@
 <script>
   import Footer from '../commons/footer/Footer'
   // import Grid from '../commons/grid/Grid'
-  import tryPlay from "../commons/tryPlay/tryPlay";
   import Customerserve from '../commons/customerserve/Customerserve'
   import Dialog from '../commons/dialog/Dialog'
   import {mapGetters, mapMutations, mapActions, mapState} from 'vuex'
@@ -257,8 +255,7 @@
       Footer,
       // Grid,
       Customerserve,
-      Dialog,
-      tryPlay
+      Dialog
     },
     data() {
       return {
@@ -298,7 +295,7 @@
             // icon: require('@/assets/themes/hjb/black/ic_blctransfer.svg'),
             iconName: 'iconic-blctransfer1',
             text: 'lang.user.orderInquiry',
-            path: '/Note'
+            path: '/Note?type=6'
           },
           // {
           //   icon: require('@/assets/themes/hjb/black/ic_blctransfer.svg'),
@@ -504,7 +501,7 @@
       },
       handleToTryPlay() {
         this.$http.users.regTest().then((res) => {
-            if (res && res.code === 200) {
+            if (res && res.status === 200) {
               console.log(res, '试玩试玩试玩试玩');
               this.setData({key: 'isLogin', value: true});
               sessionStorage.setItem('isLogin', JSON.stringify(true));
@@ -721,7 +718,7 @@
     .user-nologin {
       display: flex;
       align-items: center;
-      /*justify-content: center;*/
+      justify-content: center;
       font-size: px2rem(16px);
       margin-top: px2rem(10px);
       .tryPlay, .user-login-btn {
@@ -887,10 +884,6 @@
       background: #24252D;
       color: #fff;
       /*margin-bottom: 80px;*/
-      /deep/.van-icon{
-        top: 12px;
-        font-size: 18px;
-      }
       .title {
         height: px2rem(45px);
         display: flex;
@@ -898,11 +891,7 @@
         justify-content: center;
         color: #fff;
         font-size: px2rem(15px);
-        @include border-1px(#393940);
-        &:after{
-          right:0;
-          left:0;
-        }
+        @include border-1px(#717180);
       }
       .user-lang-wrap {
         display: flex;
@@ -939,23 +928,25 @@
       }
 
     }
-    .go-try-play-box {
+    .try-play-box {
       color: #fff;
-      .dialog-content{
-        padding:20px;
-      }
       .content-center, .confirm-content {
+        padding: 0 px2rem(25px) px2rem(25px) px2rem(25px);
         border-radius: px2rem(20px);
-        overflow: hidden;
       }
       .dialog-title {
         text-align: center;
         line-height: 50px;
-        font-size:15px;
-        @include border-1px(#393940);
+
         &:after{
-          left:0;
-          right:0;
+          left: 0;
+          margin-bottom: 15px;
+          content: '';
+          position: absolute;
+          height: 1px;
+          width: 100%;
+          display: block;
+          background-color: #717180;
         }
       }
       .try-play-img {
@@ -965,10 +956,10 @@
       }
       .dialog-message {
         text-align: left;
-        font-size: 13px;
-        p{
-          line-height: 25px;
-        }
+        line-height: px2rem(30px);
+        font-size: px2rem(15px);
+        margin-bottom: px2rem(10px);
+        margin-top: 30px;
         .dialog-message-p {
          margin: 15px 0;
         }
@@ -978,10 +969,10 @@
         }
       }
       .dialog-footer {
-        width: px2rem(200px);
+        width: px2rem(205px);
         height: px2rem(45px);
         border-radius: px2rem(25px);
-        margin: 0 auto 45px;
+        margin: 0 auto 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1097,16 +1088,9 @@
           color: #533510;
         }
       }
-      .go-try-play-box {
+      .try-play-box {
         .content-center, .confirm-content {
           background: linear-gradient(to bottom, #403F56, #2B293F);
-        }
-        .dialog-title {
-          @include border-1px($skin-gray-placeholder-color);
-          &:after{
-            left:0;
-            right:0;
-          }
         }
         .try-play-img {
           @include bg-image('../assets/themes/hjb/grey/img/try-play');
@@ -1183,7 +1167,7 @@
           color: #533510;
         }
       }
-      .go-try-play-box {
+      .try-play-box {
         .content-center, .confirm-content {
           background: $skin-black-con-bg;
         }
@@ -1193,7 +1177,7 @@
         }
         .dialog-footer {
           color: #533510;
-          background-image: linear-gradient(to bottom, #efcea6, #dab591);
+          background: linear-gradient(to bottom, #FFEBC2, #FFD680);
         }
       }
     }

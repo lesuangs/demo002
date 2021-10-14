@@ -217,8 +217,7 @@ export default {
 
   .skin-gray{
     .date-picker-box{
-      background: #24252D;
-
+      background: $skin-gray-con-bg;
       .van-button--danger{
         background-image: linear-gradient(to bottom, #ffedc6, #ffd57d);
         color:#533510;

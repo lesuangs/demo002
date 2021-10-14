@@ -117,6 +117,7 @@ const store = new Vuex.Store({
     rechargeConfig: null,//金额充值范围
     dlRange:null,//返点
     configValue:null,
+    regLimitList: null,//获取注册配置信息
   },
   mutations: {
     ['SET_DATA'](state, {key, value}) {
@@ -124,7 +125,7 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    checkIsLogin({dispatch, commit, state}) {
+    /*checkIsLogin({dispatch, commit, state}) {
       state.timer = setInterval(() => {
         let token = Cookies.get('token');
         commit('SET_DATA', {key: 'token', value: token});
@@ -141,7 +142,7 @@ const store = new Vuex.Store({
           });
         }
       }, 3000);
-    },
+    },*/
 
     //登录接口
     login({dispatch, commit, state}, params) {
@@ -189,6 +190,22 @@ const store = new Vuex.Store({
         }).catch((err) => {
           reject(err);
 
+        })
+      })
+    },
+    //获取注册配置信息
+    getRegLimit({commit, state}, params) {
+      return new Promise((resolve, reject) => {
+        axios.get(API.GET_REG_LIMIT, {params: params}).then((_data) => {
+          if (_data.code === 200) {
+            console.log(_data.data, 7777)
+            commit('SET_DATA', {key: 'regLimitList', value: _data.data});
+            resolve(true)
+          } else {
+            reject(false)
+          }
+        }).catch((err) => {
+          reject(err);
         })
       })
     },
@@ -598,7 +615,7 @@ const store = new Vuex.Store({
         } else {
           axios.get(API.GET_ALL_ACTIVITY).then((_data) => {
             console.log(_data, 'GET_ALL_ACTIVITY');
-            if (_data.code === 200) {
+            if (_data.status === 200) {
               commit('SET_DATA', {key: 'allActivityList', value: _data.data})
               resolve(_data.data)
             }
@@ -682,6 +699,7 @@ const store = new Vuex.Store({
           // });
           // list.splice(index, 1);
           commit('SET_DATA', {key: 'navigationList', value: JSON.parse(JSON.stringify(list))});
+          // console.log(JSON.parse(JSON.stringify(list)),'JSON.parse(JSON.stringify(list))JSON.parse(JSON.stringify(list))');
           let type = Number(list[0].type);
           commit('SET_DATA', {key: 'navigationIndexType', value: type}); // 重置type
 
@@ -707,7 +725,7 @@ const store = new Vuex.Store({
     // 点击获取导航内容
     getNavigationContent({commit, state}, {type}) { // 导航内容
       axios.get(API.GET_NAVIGATION_CONTENT + '?type=' + type).then((_data) => {
-        // console.log(_data, 'getNavigationContent');
+        console.log(_data, 'getNavigationContent');
         state.navigationContent = _data.data;
         let navList = state.navigationList;
         for (let i = 0; i < navList.length; i++) {
@@ -780,14 +798,14 @@ const store = new Vuex.Store({
     },
     readMessage({commit}, params) {
       return new Promise((resolve, reject) => {
-        axios.get(API.READ_MESSAGE_STATUS, {params:params}).then((_data) => {
+        axios.post(API.READ_MESSAGE_STATUS, qs.stringify(params)).then((_data) => {
           resolve(_data.data)
         })
       })
     },
     deleteMessage({commit}, params) {
       return new Promise((resolve, reject) => {
-        axios.get(API.DELETE_MESSAGE, {params:params}).then((_data) => {
+        axios.post(API.DELETE_MESSAGE, qs.stringify(params)).then((_data) => {
           resolve(_data.data)
         })
       })
@@ -2040,6 +2058,22 @@ const store = new Vuex.Store({
           reject(err);
         })
       })
+    },
+    // 银行卡信息
+    getConfigBank({commit, state}) {
+      if (state.isLogin) {
+        return new Promise((resolve, reject) => {
+          axios.get(API.GET_CONFIG_BANK).then((_data) => {
+            if (_data.code === 200) {
+            } else {
+              reject(false)
+            }
+          }).catch((err) => {
+            reject(err);
+          })
+        });
+
+      }
     },
   },
   getters: {

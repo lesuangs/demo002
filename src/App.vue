@@ -2,10 +2,9 @@
   <!--  <div id="app" class="skin-grey">-->
   <div id="app">
     <!--    <div v-title :data-title="title"></div>-->
-    <!--<keep-alive>
+    <keep-alive>
       <router-view></router-view>
-    </keep-alive>-->
-    <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 <script>

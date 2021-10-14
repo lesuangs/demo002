@@ -1,76 +1,66 @@
 <template>
-  <div class="agent-center-box">
+  <div class="agent agent-center-box">
     <Header :headObj="headObj" @leftClick="$router.push('/user')" @rightClick="showDialog=true"/>
     <div class="agent-center-wrap">
       <NotData v-if="Object.keys(teamData).length === 0" :isNotData="isNotData"/>
-      <div class="agent-center-con" v-else>
-        <div class="agent-info-box">
-          <div class="user-data">
-            <div class="user-img">
+      <div class="g-content" v-else>
+        <div class="g-box">
+          <div class="userData">
+            <div class="data-left">
               <img :src="loginInfo && loginInfo.avatar" class="img-head">
+<!--              <img :src="'/data/userimg/userimg' + ($store.state.userInformation.uid)%5 + '.png'" alt="">-->
             </div>
-            <ul>
-              <li>
-                <label>{{$t('lang.daiLiZhongXin.UserName')}}：</label>
-                <span>{{$store.state.userInformation.account}}</span>
-              </li>
-              <li>
-                <label>{{$t('lang.daiLiZhongXin.lotteryRebates')}}：</label>
-                <span>{{ ($store.state.accountType=== 1 ? $t('lang.daiLiZhongXin.type[0]') : ($store.state.accountType === 0 ?
-                $t('lang.footer.member') : '')) + ' — ' + $store.state.userInformation.rebate + '%' }}</span>
-              </li>
-              <li>
-                <label>{{$t('lang.daiLiZhongXin.accountBalance')}}：</label>
-                <!--                <span>{{ parseFloat($store.state.balance).toFixed(2) }}{{ $t('lang.common.yuan') }}</span>-->
-
-                <span>
-                  <span class="user-money">
-                    {{ balance == null ? '0' : format_number(balance).split('.')[0] }}</span><em class="money-point">{{ balance == null ? '.00' :'.'+format_number(balance).split('.')[1] }}{{ $t('lang.common.yuan') }}
-                  </em>
-                </span>
-              </li>
-            </ul>
+            <div class="data-right">
+              <div><span
+                      style="margin-right: .25rem">{{
+                $t('lang.daiLiZhongXin.UserName')
+              }}：</span><i>{{ userInformation.account }}</i>
+              </div>
+              <div>
+              <span>{{
+                  $t('lang.daiLiZhongXin.lotteryRebates')
+                }}：</span><i>{{
+                ($store.state.accountType === 1 ? $t('lang.daiLiZhongXin.type[0]') : ($store.state.accountType === 0 ?
+                $t('lang.footer.member') : '')) + ' — ' + userInformation.rebate + '%'
+                }}</i>
+              </div>
+              <div>
+              <span>{{
+                  $t('lang.daiLiZhongXin.accountBalance')
+                }}：</span>
+                <i>
+                  <i class="user-money">{{ balance == null ? '0' : format_number(balance).split('.')[0] }}</i><em class="money-point">{{ balance == null ? '.00' :'.'+format_number(balance).split('.')[1] }}{{ $t('lang.common.yuan') }}</em>
+                </i>
+<!--                <i>{{ parseFloat($store.state.balance).toFixed(2) }}{{ $t('lang.common.yuan') }}</i>-->
+              </div>
+            </div>
           </div>
-          <div class="agent-team">
-            <ul>
-              <li>
-                <p>
-                  <i class="iconfont iconyuandianxiao"></i>
-                  <label>{{ $t('lang.daiLiZhongXin.teamSize') }}</label>
-                </p>
-                <h1>{{ teamData.teamCount }}</h1>
-              </li>
-              <li>
-                <p>
-                  <i class="iconfont iconyuandianxiao"></i>
-                  <label>{{ $t('lang.daiLiZhongXin.teamBalance') }}</label>
-                </p>
-                <!--                <h1>{{ teamData.money.toFixed(2) }}</h1>-->
-                <h1>
-                  <i class="user-money">
-                    {{ teamData.money == null ? '0' : format_number(teamData.money).split('.')[0] }}</i><em class="money-point">{{ teamData.money == null ? '.00' :'.'+format_number(teamData.money).split('.')[1] }}
-                </em>
-                </h1>
-              </li>
-              <li>
-                <p>
-                  <i class="iconfont iconyuandianxiao"></i>
-                  <label>{{ $t('lang.daiLiZhongXin.yesterdaysCommission') }}</label>
-                </p>
-                <h1>0</h1>
-              </li>
-              <li>
-                <p>
-                  <i class="iconfont iconyuandianxiao"></i>
-                  <label>{{ $t('lang.daiLiZhongXin.cumulativeCommission') }}</label>
-                </p>
-                <h1>{{ teamData.dlRebate }}</h1>
-              </li>
-            </ul>
+          <div class="teamDateFex">
+            <div class="teamDate">
+              <p style="margin-right: .2rem;" class="red">{{ $t('lang.daiLiZhongXin.teamSize') }}</p>
+              <h3>{{ teamData.teamCount }}</h3>
+            </div>
+            <div class="teamDate">
+              <p style="margin-right: .2rem;" class="orange">{{ $t('lang.daiLiZhongXin.teamBalance') }}</p>
+<!--              <h3>{{ teamData.money.toFixed(2) }}</h3>-->
+              <h3>
+                <i class="user-money">{{ teamData.money == null ? '0' : format_number(teamData.money).split('.')[0] }}</i><em class="money-point">{{ teamData.money == null ? '.00' :'.'+format_number(teamData.money).split('.')[1] }}</em>
+              </h3>
+            </div>
+            <div class="teamDate">
+              <p style="margin-right: .2rem;" class="green">{{ $t('lang.daiLiZhongXin.yesterdaysCommission') }}</p>
+              <h3>0</h3>
+            </div>
+            <div class="teamDate">
+              <p style="margin-right: .2rem;" class="blue">{{ $t('lang.daiLiZhongXin.cumulativeCommission') }}</p>
+              <h3>{{ teamData.dlRebate }}</h3>
+            </div>
           </div>
         </div>
-        <div class="agent-center-link">
-          <Grid :gridList="gridList"/>
+        <div class="agent-center">
+          <div class="content">
+            <Grid :gridList="gridList"/>
+          </div>
         </div>
       </div>
     </div>
@@ -187,123 +177,118 @@
 </script>
 
 <style lang="scss" scoped>
-  .agent-center-box{
-    height:100%;
+  .agent-center-box {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    .agent-center-con{
-      padding:15px;
-    }
-    .agent-info-box,.agent-center-link{
-      background: #24252D;
-      margin-bottom: 10px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .agent-center-wrap{
-      flex:1;
+    .agent-center-wrap {
+      padding-bottom: px2rem(20px);
+      flex: 1;
       overflow-y: scroll;
     }
-
-    .agent-info-box{
-      .user-data{
-        min-height: px2rem(100px);
-        display: flex;
-        align-items: center;
-        padding:px2rem(10px) px2rem(20px);
-        @include border-1px(#393940);
-        .user-img{
-          width:px2rem(55px);
-          height:px2rem(55px);
-          border-radius: 50%;
-          margin-right: px2rem(12px);
-        }
-        ul{
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          flex:1;
-          li{
-            display: flex;
-            align-items: center;
-            line-height: px2rem(28px);
-            label{
-              font-size:px2rem(12px);
-              min-width: px2rem(65px);
-              color:#9a9aa7;
-            }
-            span{
-              font-size: px2rem(15px);
-              flex:2;
-              color:#fff;
-            }
-          }
-        }
-      }
-      .agent-team{
-        padding:px2rem(10px) px2rem(20px) 0;
-        ul{
-          display: flex;
-          flex-wrap: wrap;
-          li{
-            width:50%;
-            margin-bottom: px2rem(10px);
-            p{
-              display: flex;
-              align-items: center;
-              font-size: px2rem(12px);
-              line-height: px2rem(20px);
-              label{
-                color:#9a9aa7;
-              }
-            }
-            h1{
-              font-size:px2rem(20px);
-              margin-left: px2rem(20px);
-              line-height: px2rem(30px);
-              color:#fff;
-            }
-            &:nth-child(1){
-              .iconfont{
-                color:#C71313;
-              }
-            }
-            &:nth-child(2){
-              .iconfont{
-                color:#F2890B;
-              }
-            }
-            &:nth-child(3){
-              .iconfont{
-                color:#08A33B;
-              }
-            }
-            &:nth-child(4){
-              .iconfont{
-                color:#1F25F3;
-              }
-            }
-          }
-        }
-      }
+    /deep/ .van-cell {
+      background: none;
+    }
+    .data-right span {
+      font-size: px2rem(12px);
     }
   }
 
   .skin-gray {
     .agent-center-box {
-      .agent-info-box, .agent-center-link {
+      .g-box, .agent-center {
         background: $skin-gray-con-bg;
+      }
+      .data-right span,
+      .teamDate p {
+        color: $skin-gray-text-sub-color;
       }
     }
   }
 
   .skin-black {
     .agent-center-box {
-      .agent-info-box, .agent-center-link {
+      .g-box, .agent-center {
         background: $skin-black-con-bg;
+      }
+      .data-right span,
+      .teamDate p {
+        color: $skin-black-text-sub-color;
       }
     }
   }
 
+  .teamDateFex {
+    display: flex;
+    flex-wrap: wrap;
+    //background-color: #fff;
+    padding: .2rem .3rem;
+    font-size: .26rem;
+    margin: px2rem(10px) 0;
+  }
 
+  .agent {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*height: 100%;*/
+
+    /*.g-content {*/
+    /*  flex: 1;*/
+    /*  overflow: scroll;*/
+    /*  !*background-color: #f5f5f9;*!*/
+    /*}*/
+
+    .g-box {
+      padding: px2rem(10px) px2rem(15px) 0;
+      //background-color: #ffffff;
+      //border-bottom: .05rem solid rgb(246, 246, 246);
+    }
+
+    //.agent-center {
+    //  margin-top: .2rem;
+    //  background-color: #fff;
+    //}
+  }
+
+  .userData {
+    display: flex;
+    align-items: center;
+  }
+
+  .data-left img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0 px2rem(12px);
+  }
+
+  .data-right span {
+    color: rgb(162, 162, 162);
+  }
+
+  .data-right > div {
+    line-height: px2rem(28px);
+    /*margin: .2rem 0;*/
+  }
+
+  .data-right i {
+    font-size: .28rem;
+  }
+
+  .iconStyle {
+    display: block;
+    height: .3rem;
+    width: .3rem;
+    margin-right: .2rem;
+  }
+
+  .teamDate {
+
+    width: 50%;
+    margin: .1rem 0;
+  }
+
+  .teamDate p {
+    margin-right: .2rem;
+    color: rgb(137, 137, 137)
+  }
 </style>

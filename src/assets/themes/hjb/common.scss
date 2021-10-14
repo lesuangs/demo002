@@ -456,17 +456,6 @@ input，button，
 
 
 .skin-gray{
-
-  .mod-list-item{
-    &:not(:last-child) {
-      @include border-1px($skin-gray-placeholder-color);
-    }
-  }
-  .mod-popup-box{
-    &.van-popup{
-      background: #09090B;
-    }
-  }
   .copy-btn{
     border: solid 1px #6a697f;
     background: rgba(144, 143, 177, 0.2);
@@ -527,7 +516,6 @@ input，button，
   }
 
   .tab-nav-box{
-    background: $skin-gray-con-bg;
     &:after{
       border-color:$skin-gray-border-color;
     }
@@ -693,11 +681,6 @@ input，button，
   &,.g-content{
     background: $skin-black-bg;
   }
-  .mod-list-item{
-    &:not(:last-child) {
-      @include border-1px($skin-black-placeholder-color);
-    }
-  }
 
   //倒计时样式
   .countdown{
@@ -743,11 +726,11 @@ input，button，
   }
 
   .tab-nav-box{
-    background-color: $skin-black-con-bg;
     &:after{
       border-color:$skin-black-border-color;
     }
     ul{
+      background-color: $skin-black-con-bg;
       li{
         color:#8f8f8f;
         &.active{

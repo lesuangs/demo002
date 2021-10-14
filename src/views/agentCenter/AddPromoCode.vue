@@ -274,9 +274,6 @@
     .add-promo-code-box{
       /deep/.van-cell{
         background: $skin-gray-con-bg;
-        .van-cell__title,.van-field__label{
-          color:$skin-gray-label-color;
-        }
       }
     }
   }
@@ -285,9 +282,6 @@
     .add-promo-code-box{
       /deep/.van-cell{
         background: $skin-black-con-bg;
-        .van-cell__title,.van-field__label{
-          color:$skin-black-label-color;
-        }
       }
     }
   }

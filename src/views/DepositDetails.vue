@@ -9,7 +9,6 @@
     </div>
     <div class="dialog">
       <van-popup
-              class="mod-popup-box"
         v-model="show"
         position="bottom"
         :style="{ height: '80%' }"
